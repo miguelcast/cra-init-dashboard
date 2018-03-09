@@ -30,11 +30,49 @@ npm start
 
 #### Structure folders
 ```
-- public
-- src
--- components (react, styled components and ant design)
--- pages      (react)
--- state      (redux)
--- styles     (Less and styled components)
--- utils      (javascript)
+my-app
+├── public
+│   └──  index.html
+└── src
+    └── components
+       └── AsyncComponent.js
+    └── pages
+        └── Layout.js
+    └── state(Redux)
+        └── store.js
+        └── reducers.js
+    └── styles(Less and styled components)
+        └── index.less
+    └── utils
+    └── index.js
+    └──  routes.js
 ```
+
+#### Add news routes
+
+Adding routes, modify src/routes.js file:
+
+```javascript
+export default [
+  // path, component, exact
+  createRoute('/', Home, true),
+];
+```
+
+Code Splitting:
+
+```javascript
+export default [
+  // path, component, exact
+  createRoute(
+    '/home',
+    asyncComponent(() =>
+      import('./pages/Home.js').then(module => module.default),
+    ),
+  ),
+];
+```
+
+#### Customization Ant Design
+
+For custom Ant Design styles, modify src/styles/index.less, the Less variables that you can modify [here.](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less)
