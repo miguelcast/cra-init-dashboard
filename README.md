@@ -7,6 +7,7 @@
 4. [Ant Design](https://ant.design)
 5. [Less](http://lesscss.org) for Ant Design customization
 6. [Styled Components](https://www.styled-components.com)
+7. [Axios](https://github.com/axios/axios)
 
 #### Install dependencies:
 
@@ -34,6 +35,8 @@ my-app
 ├── public
 │   └──  index.html
 └── src
+    └── api
+       └── instance.js
     └── components
        └── AsyncComponent.js
     └── pages
