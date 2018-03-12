@@ -76,3 +76,13 @@ export default [
 #### Customization Ant Design
 
 For custom Ant Design styles, modify src/styles/index.less, the Less variables that you can modify [here.](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less)
+
+#### API Configuration
+
+Do not import **axios** directly but import the instance of axios from **api/instance.js**.
+
+For Url API config add Key **REACT_APP_API** to .env files.
+
+```
+REACT_APP_API=http://localhost/my-api
+```
