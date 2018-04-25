@@ -1,7 +1,7 @@
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 /* stylelint-disable no-duplicate-selectors */
 /* stylelint-disable declaration-bang-space-before,no-duplicate-selectors */
-/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors */
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
 /* stylelint-disable at-rule-no-unknown */
 @font-face {
   font-family: "Monospaced Number";
@@ -4053,7 +4053,7 @@ a.ant-btn-sm {
   font-size: 0;
   height: 0;
 }
-.ant-card-contain-grid .ant-card-body {
+.ant-card-contain-grid:not(.ant-card-loading) {
   margin: -1px 0 0 -1px;
   padding: 0;
 }
@@ -4158,9 +4158,6 @@ a.ant-btn-sm {
 .ant-card-padding-transition .ant-card-body {
   transition: padding .3s;
 }
-.ant-card-padding-transition .ant-card-extra {
-  transition: right .3s;
-}
 .ant-card-type-inner .ant-card-head {
   padding: 0 24px;
   background: #fafafa;
@@ -4224,18 +4221,13 @@ a.ant-btn-sm {
 }
 .ant-card-loading .ant-card-body {
   user-select: none;
-  padding: 0;
-}
-.ant-card-loading-content {
-  padding: 24px;
 }
 .ant-card-loading-content p {
   margin: 0;
 }
 .ant-card-loading-block {
-  display: inline-block;
-  margin: 5px 2% 0 0;
   height: 14px;
+  margin: 4px 0;
   border-radius: 2px;
   background: linear-gradient(90deg, rgba(207, 216, 220, 0.2), rgba(207, 216, 220, 0.4), rgba(207, 216, 220, 0.2));
   animation: card-loading 1.4s ease infinite;
@@ -11321,7 +11313,7 @@ textarea.ant-input-number {
 .ant-list-loading .ant-list-spin-nested-loading {
   min-height: 32px;
 }
-.ant-list-something-after-last-item .ant-list-item:last-child {
+.ant-list-something-after-last-item .ant-spin-container > .ant-list-item:last-child {
   border-bottom: 1px solid #e8e8e8;
 }
 .ant-list-lg .ant-list-item {
@@ -11376,7 +11368,7 @@ textarea.ant-input-number {
   border-bottom: none;
   padding-top: 0;
   padding-bottom: 0;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 .ant-list-grid .ant-list-item-content {
   display: block;
@@ -11925,17 +11917,14 @@ textarea.ant-mention-wrapper .ant-mention-editor {
   border-bottom: 2px solid #dd4466;
   color: #dd4466;
 }
-.ant-menu-horizontal > .ant-menu-item > a,
-.ant-menu-horizontal > .ant-menu-submenu > a {
+.ant-menu-horizontal > .ant-menu-item > a {
   display: block;
   color: rgba(0, 0, 0, 0.65);
 }
-.ant-menu-horizontal > .ant-menu-item > a:hover,
-.ant-menu-horizontal > .ant-menu-submenu > a:hover {
+.ant-menu-horizontal > .ant-menu-item > a:hover {
   color: #dd4466;
 }
-.ant-menu-horizontal > .ant-menu-item > a:before,
-.ant-menu-horizontal > .ant-menu-submenu > a:before {
+.ant-menu-horizontal > .ant-menu-item > a:before {
   bottom: -2px;
 }
 .ant-menu-horizontal:after {
@@ -12112,6 +12101,12 @@ textarea.ant-mention-wrapper .ant-mention-editor {
   color: rgba(0, 0, 0, 0.25) !important;
   cursor: not-allowed;
 }
+.ant-menu-item-disabled > .ant-menu-submenu-title > .ant-menu-submenu-arrow:before,
+.ant-menu-submenu-disabled > .ant-menu-submenu-title > .ant-menu-submenu-arrow:before,
+.ant-menu-item-disabled > .ant-menu-submenu-title > .ant-menu-submenu-arrow:after,
+.ant-menu-submenu-disabled > .ant-menu-submenu-title > .ant-menu-submenu-arrow:after {
+  background: rgba(0, 0, 0, 0.25) !important;
+}
 .ant-menu-dark,
 .ant-menu-dark .ant-menu-sub {
   color: rgba(255, 255, 255, 0.65);
@@ -12142,6 +12137,9 @@ textarea.ant-mention-wrapper .ant-mention-editor {
 .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu {
   border-color: #001529;
   border-bottom: 0;
+}
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item > a:before {
+  bottom: 0;
 }
 .ant-menu-dark .ant-menu-item,
 .ant-menu-dark .ant-menu-item-group-title,
@@ -12254,6 +12252,12 @@ textarea.ant-mention-wrapper .ant-mention-editor {
 .ant-menu-dark .ant-menu-item-disabled > .ant-menu-submenu-title,
 .ant-menu-dark .ant-menu-submenu-disabled > .ant-menu-submenu-title {
   color: rgba(255, 255, 255, 0.35) !important;
+}
+.ant-menu-dark .ant-menu-item-disabled > .ant-menu-submenu-title > .ant-menu-submenu-arrow:before,
+.ant-menu-dark .ant-menu-submenu-disabled > .ant-menu-submenu-title > .ant-menu-submenu-arrow:before,
+.ant-menu-dark .ant-menu-item-disabled > .ant-menu-submenu-title > .ant-menu-submenu-arrow:after,
+.ant-menu-dark .ant-menu-submenu-disabled > .ant-menu-submenu-title > .ant-menu-submenu-arrow:after {
+  background: rgba(255, 255, 255, 0.35) !important;
 }
 .ant-message {
   font-family: "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
