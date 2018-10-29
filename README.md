@@ -56,6 +56,8 @@ my-app
 Adding routes, modify src/routes.js file:
 
 ```javascript
+import Home from './pages/Home';
+
 export default [
   // path, component, exact
   createRoute('/', Home, true),
