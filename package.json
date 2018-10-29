@@ -1,19 +1,39 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
-  "private": true,
+  "name": "cra-rr4-redux-antd",
+  "title": "cra rr4 redux antd",
+  "description": "Create React App, React Router v4, Redux and Ant Design",
+  "keywords": [
+    "template",
+    "react",
+    "redux",
+    "router",
+    "antd",
+    "app",
+    "boilerplate"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miguelcast/cra-rr4-redux-antd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/miguelcast/cra-rr4-redux-antd/issues"
+  },
+  "version": "0.3.0",
+  "private": false,
+  "license": "MIT",
+  "author": "Miguel Cast",
   "dependencies": {
-    "antd": "^3.5.3",
+    "antd": "^3.10.3",
     "axios": "^0.18.0",
-    "prop-types": "^15.6.1",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "^1.1.4",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.2.0",
-    "styled-components": "^3.2.6"
+    "prop-types": "^15.6.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-redux": "^5.1.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.0.5",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.0.2"
   },
   "css": {
     "preprocess": "less"

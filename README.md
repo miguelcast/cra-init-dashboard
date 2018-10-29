@@ -89,3 +89,7 @@ For Url API config add Key **REACT_APP_API** to .env files.
 ```
 REACT_APP_API=http://localhost/my-api
 ```
+
+## License
+
+MIT

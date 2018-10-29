@@ -19,4 +19,10 @@ export default [
       import('./pages/Home.js').then(module => module.default),
     ),
   ),
+  createRoute(
+    '/about',
+    asyncComponent(() =>
+      import('./pages/About.js').then(module => module.default),
+    ),
+  ),
 ];
