@@ -6,8 +6,7 @@
 3. [React Router v4](https://reacttraining.com/react-router/)
 4. [Ant Design](https://ant.design)
 5. [Less](http://lesscss.org) for Ant Design customization
-6. [Styled Components](https://www.styled-components.com)
-7. [Axios](https://github.com/axios/axios)
+6. [Axios](https://github.com/axios/axios)
 
 #### Install dependencies:
 
