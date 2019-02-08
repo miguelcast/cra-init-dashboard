@@ -6,6 +6,7 @@ const AsyncAbout = lazy(() => import('../pages/About.js'));
 const AsyncRegister = lazy(() => import('../pages/Register.js'));
 const AsyncLogin = lazy(() => import('../pages/Login.js'));
 const AsyncForgotPass = lazy(() => import('../pages/ForgotPassword.js'));
+const AsyncList = lazy(() => import('../pages/List.js'));
 
 export default [
   createRoute('/', 'Home', Home, 'home', 'primary', true),
@@ -19,4 +20,5 @@ export default [
     null,
     null,
   ),
+  createRoute('/list', 'List', AsyncList, null, null),
 ];
