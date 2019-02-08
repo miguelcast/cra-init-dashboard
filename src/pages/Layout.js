@@ -9,13 +9,7 @@ const { Footer, Content, Sider } = Layout;
 
 const Routes = () => (
   <Suspense
-    fallback={
-      <Spin
-        spinning={true}
-        delay={1 * 800}
-        style={{ width: '100%', minHeight: 300 }}
-      />
-    }>
+    fallback={<Spin size="large" style={{ width: '100%', height: 300 }} />}>
     <Switch>
       {routes.map(route => (
         <Route
@@ -54,7 +48,8 @@ const Document = props => {
           height: '100vh',
           position: 'fixed',
           left: 0,
-          boxShadow: '0 1px 5px rgba(0, 0, 0, 0.15)',
+          boxShadow: '0 64px 5px rgba(0, 0, 0, 0.15)',
+          borderRight: '1px solid #f0f0f0',
         }}>
         <Logo />
         <strong

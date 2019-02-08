@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Icon, Input, Button } from 'antd';
 import PropTypes from 'prop-types';
+import { Title } from '../Shared';
 
 const formShape = {
   validateFields: PropTypes.func,
@@ -27,6 +28,7 @@ class Register extends React.Component {
       <Form
         onSubmit={this.handleSubmit}
         style={{ maxWidth: 400, margin: '0 auto' }}>
+        <Title text="Register" />
         <Form.Item>
           {getFieldDecorator('userName', {
             rules: [

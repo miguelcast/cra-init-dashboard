@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Icon, Input } from 'antd';
 import { withRouter } from 'react-router-dom';
+import { Title } from '../components/Shared';
 
 const FormItem = Form.Item;
 
@@ -19,6 +20,7 @@ const ForgotPassword = ({ form, history }) => {
 
   return (
     <Form onSubmit={onSubmit} style={{ maxWidth: 400, margin: '0 auto' }}>
+      <Title text="Forgot password" />
       <span>
         Please, input your email address associated with the application.
       </span>

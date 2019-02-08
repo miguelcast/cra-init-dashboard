@@ -1,0 +1,38 @@
+@import (once) "../../node_modules/antd/dist/antd.less";
+
+.custom-line-bottom {
+  content:'';
+  position: absolute;
+  bottom: 0;
+  display: inline-block;
+  height: 2px;
+  background-color: @primary-color;
+}
+
+.custom-title {
+  position: relative;
+  color: @primary-color;
+  font-size: 2.5rem;
+
+  @media screen and (max-width: @screen-sm-max) {
+    font-size: 2rem;
+  }
+
+  &::before {
+    .custom-line-bottom();
+    left: 0;
+    width: 120px;
+    @media screen and (max-width: @screen-sm-max) {
+      width: 80px;
+    }
+  }
+
+  &::after {
+    .custom-line-bottom();
+    left: 124px;
+    width: 4px;
+    @media screen and (max-width: @screen-sm-max) {
+      left: 84px;
+    }
+  }
+}

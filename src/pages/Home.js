@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'antd';
+import { Title } from '../components/Shared';
 
 const Home = ({ str }) => {
   return (
     <div>
+      <Title text="Home" />
       <Link to="about">
         <Button type="primary" size="large">
           Go to About

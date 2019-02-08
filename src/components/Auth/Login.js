@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Title } from '../Shared';
 
 const formShape = {
   validateFields: PropTypes.func,
@@ -28,6 +29,7 @@ class Login extends React.Component {
       <Form
         onSubmit={this.handleSubmit}
         style={{ maxWidth: 400, margin: '0 auto' }}>
+        <Title text="Login" />
         <Form.Item>
           {getFieldDecorator('userName', {
             rules: [

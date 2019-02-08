@@ -6,7 +6,6 @@ import menuItems from '../../config/routes';
 
 const MenuHeader = ({ pathname, isCollapse, ...rest }) => (
   <Menu
-    theme="dark"
     mode="horizontal"
     selectedKeys={[pathname || '/']}
     style={{ height: 64, marginTop: isCollapse ? '-3px' : 0 }}
