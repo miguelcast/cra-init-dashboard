@@ -6,6 +6,7 @@
     "node": true
   },
   "plugins": [
+    "react-hooks",
     "prettier",
     "react",
     "jsx-a11y",
@@ -18,7 +19,8 @@
       "trailingComma": "all",
       "bracketSpacing": true,
       "jsxBracketSameLine": true
-    }]
+    }],
+    "react-hooks/rules-of-hooks": "error"
   },
   "extends": [
     "plugin:react/recommended",

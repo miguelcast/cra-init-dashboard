@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { LocaleProvider } from 'antd';
-import esEs from 'antd/lib/locale-provider/es_ES';
 import './styles/index.css';
 import Layout from './pages/Layout';
 import store from './state/store';
-import registerServiceWorker from './registerServiceWorker';
+import getLocalesAntd from './config/locale';
+import * as registerServiceWorker from './registerServiceWorker';
 
 const App = () => {
   return (
-    <LocaleProvider locale={esEs}>
+    <LocaleProvider locale={getLocalesAntd()}>
       <Provider store={store}>
         <Router>
           <Layout />
@@ -22,4 +22,4 @@ const App = () => {
 };
 
 ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+registerServiceWorker.register();
