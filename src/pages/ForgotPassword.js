@@ -19,7 +19,7 @@ const ForgotPassword = ({ form, history }) => {
   }
 
   return (
-    <Form onSubmit={onSubmit} style={{ maxWidth: 400, margin: '0 auto' }}>
+    <Form onSubmit={onSubmit} className="custom-form-forgot">
       <Title text="Forgot password" />
       <span>
         Please, input your email address associated with the application.
@@ -32,7 +32,7 @@ const ForgotPassword = ({ form, history }) => {
           ],
         })(
           <Input
-            prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            prefix={<Icon type="mail" className="custom-prefix-icon" />}
             placeholder="Email"
             size="large"
           />,
@@ -40,7 +40,7 @@ const ForgotPassword = ({ form, history }) => {
       </FormItem>
       <FormItem>
         <Button
-          style={{ width: '100%' }}
+          className="custom-button"
           type="primary"
           size="large"
           htmlType="submit">
@@ -48,7 +48,7 @@ const ForgotPassword = ({ form, history }) => {
         </Button>
       </FormItem>
       <FormItem>
-        <Button onClick={history.goBack} style={{ width: '100%' }} size="large">
+        <Button onClick={history.goBack} className="custom-button" size="large">
           Return
         </Button>
       </FormItem>

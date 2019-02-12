@@ -1,58 +1,49 @@
 import React, { Fragment } from 'react';
-import { Table, Card } from 'antd';
+import { Table, Button, Row, Col } from 'antd';
+import PropTypes from 'prop-types';
 import { Title } from '../Shared';
 
-const dataSource = [
-  {
-    key: '1',
-    name: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
-  },
-  {
-    key: '2',
-    name: 'Daniel',
-    age: 12,
-    address: '14 Downing Street',
-  },
-  {
-    key: '3',
-    name: 'John',
-    age: 42,
-    address: '10 Downing Street',
-  },
-];
-
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    sorter: (a, b) => a.name.localeCompare(b.name),
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-    align: 'right',
-    width: 80,
-    sorter: (a, b) => a.age - b.age,
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-    sorter: (a, b) => a.address.localeCompare(b.address),
-  },
-];
-
-const List = () => (
+const List = ({ title, columns, dataSource, addButton, onAction, ...rest }) => (
   <Fragment>
-    <Title text="List of Crud" />
-    <Card bordered={false}>
-      <Table columns={columns} dataSource={dataSource} />
-    </Card>
+    <Row type="flex" align="middle" justify="space-between">
+      <Col>
+        <Title text={title} />
+      </Col>
+      <Col>
+        {addButton && (
+          <Button
+            onClick={onAction}
+            type="primary"
+            icon={addButton.icon}
+            size="large">
+            {addButton.text}
+          </Button>
+        )}{' '}
+        <Button type="primary" ghost icon="ellipsis" size="large" />
+      </Col>
+    </Row>
+    <Table
+      columns={columns}
+      dataSource={dataSource}
+      className="custom-table"
+      {...rest}
+    />
   </Fragment>
 );
+
+List.propTypes = {
+  title: PropTypes.string.isRequired,
+  columns: PropTypes.array.isRequired,
+  dataSource: PropTypes.array,
+  addButton: PropTypes.shape({
+    text: PropTypes.string,
+    icon: PropTypes.string,
+  }),
+  onAction: PropTypes.func,
+};
+
+List.defaultProps = {
+  dataSource: [],
+};
 
 export default List;

@@ -4,12 +4,12 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { Layout, Drawer, Spin } from 'antd';
 import routes from '../config/routes';
 import { MenuPrimary, Logo, Header } from '../components/Layout';
+import PageNotFound404 from './404';
 
 const { Footer, Content, Sider } = Layout;
 
 const Routes = () => (
-  <Suspense
-    fallback={<Spin size="large" style={{ width: '100%', height: 300 }} />}>
+  <Suspense fallback={<Spin size="large" className="custom-layout-spin" />}>
     <Switch>
       {routes.map(route => (
         <Route
@@ -19,6 +19,7 @@ const Routes = () => (
           component={props => React.createElement(route.component, props, null)}
         />
       ))}
+      <Route component={PageNotFound404} />
     </Switch>
   </Suspense>
 );
@@ -36,26 +37,16 @@ const Document = props => {
   const toggleCollapse = () => setIsCollapsed(!isCollapsed);
 
   return (
-    <Layout>
+    <Layout className="custom-layout">
       <Sider
         width={250}
         breakpoint="md"
         collapsedWidth="0"
         collapsed={isCollapsed}
         onCollapse={toggleCollapse}
-        style={{
-          overflow: 'auto',
-          height: '100vh',
-          position: 'fixed',
-          left: 0,
-          boxShadow: '0 64px 5px rgba(0, 0, 0, 0.15)',
-          borderRight: '1px solid #f0f0f0',
-        }}>
+        className="custom-layout-sider">
         <Logo />
-        <strong
-          style={{ padding: '0.8rem 0 1rem 1.5rem', display: 'inline-block' }}>
-          Dashboard
-        </strong>
+        <strong className="custom-menu-title">Dashboard</strong>
         <MenuPrimary pathname={pathname} />
       </Sider>
       <Drawer
@@ -73,11 +64,7 @@ const Document = props => {
           showDrawer={showDrawer}
           drawerVisible={visible}
         />
-        <Content
-          style={{
-            padding: '1rem',
-            minHeight: 'calc(100vh - 64px - 69px)',
-          }}>
+        <Content className="custom-layout-content">
           <Routes />
         </Content>
         <Footer>Footer</Footer>

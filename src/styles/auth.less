@@ -1,0 +1,30 @@
+@import (once) "../../node_modules/antd/dist/antd.less";
+
+.custom-auth-form {
+  max-width: 400px;
+  margin: 0 auto;
+
+  .custom-prefix-icon {
+    color: rgba(0,0,0,.25);
+  }
+
+  .custom-button {
+    width: 100%;
+  }
+}
+
+.custom-form-login {
+  .custom-auth-form();
+
+  .custom-forgot-link {
+    float: right;
+  }
+}
+
+.custom-form-register {
+  .custom-auth-form();
+}
+
+.custom-form-forgot {
+  .custom-auth-form();
+}

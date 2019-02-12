@@ -26,9 +26,7 @@ class Login extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Form
-        onSubmit={this.handleSubmit}
-        style={{ maxWidth: 400, margin: '0 auto' }}>
+      <Form onSubmit={this.handleSubmit} className="custom-form-login">
         <Title text="Login" />
         <Form.Item>
           {getFieldDecorator('userName', {
@@ -38,7 +36,7 @@ class Login extends React.Component {
             ],
           })(
             <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon type="user" className="custom-prefix-icon" />}
               placeholder="Email"
               size="large"
             />,
@@ -49,7 +47,7 @@ class Login extends React.Component {
             rules: [{ required: true, message: 'Please input your Password!' }],
           })(
             <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon type="lock" className="custom-prefix-icon" />}
               type="password"
               size="large"
               placeholder="Password"
@@ -61,14 +59,14 @@ class Login extends React.Component {
             valuePropName: 'checked',
             initialValue: true,
           })(<Checkbox>Remember me</Checkbox>)}
-          <Link to="/forgotPassword" style={{ float: 'right' }}>
+          <Link to="/forgotPassword" className="custom-forgot-link">
             Forgot password
           </Link>
           <Button
-            style={{ width: '100%' }}
             type="primary"
             size="large"
-            htmlType="submit">
+            htmlType="submit"
+            className="custom-button">
             Log in
           </Button>
           Or <Link to="/register">register now!</Link>

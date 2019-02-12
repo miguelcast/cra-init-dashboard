@@ -1,0 +1,23 @@
+[
+  {
+    "key": "1",
+    "name": "Mike",
+    "age": 32,
+    "address": "10 Downing Street",
+    "status": true
+  },
+  {
+    "key": "2",
+    "name": "Daniel",
+    "age": 12,
+    "address": "14 Downing Street",
+    "status": false
+  },
+  {
+    "key": "3",
+    "name": "John",
+    "age": 42,
+    "address": "10 Downing Street",
+    "status": true
+  }
+]

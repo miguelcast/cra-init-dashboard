@@ -4,23 +4,18 @@ import PropTypes from 'prop-types';
 import MenuHeader from './MenuHeader';
 
 const Header = ({ pathname, isCollapsed, showDrawer, drawerVisible }) => (
-  <Layout.Header
-    style={{
-      paddingLeft: '1rem',
-      paddingRight: '1rem',
-      boxShadow: '0 1px 5px rgba(0, 0, 0, 0.15)',
-    }}>
+  <Layout.Header className="custom-header">
     <Row type="flex" align="middle" justify="space-between">
       <Col>
         {isCollapsed && (
           <Icon
             type={drawerVisible ? 'menu-fold' : 'menu-unfold'}
             onClick={showDrawer}
-            style={{ fontSize: '1.5rem', marginTop: '1.22rem', color: 'white' }}
+            className="custom-header-toggle-icon"
           />
         )}
       </Col>
-      <Col order={2}>
+      <Col span={12} order={2} className="custom-align-right">
         <MenuHeader isCollapse={isCollapsed} pathname={pathname} />
       </Col>
     </Row>

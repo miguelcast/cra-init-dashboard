@@ -25,9 +25,7 @@ class Register extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Form
-        onSubmit={this.handleSubmit}
-        style={{ maxWidth: 400, margin: '0 auto' }}>
+      <Form onSubmit={this.handleSubmit} className="custom-form-register">
         <Title text="Register" />
         <Form.Item>
           {getFieldDecorator('userName', {
@@ -37,7 +35,7 @@ class Register extends React.Component {
             ],
           })(
             <Input
-              prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon type="mail" className="custom-prefix-icon" />}
               placeholder="Email"
               size="large"
             />,
@@ -48,7 +46,7 @@ class Register extends React.Component {
             rules: [{ required: true, message: 'Please input your name!' }],
           })(
             <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon type="user" className="custom-prefix-icon" />}
               placeholder="Name"
               size="large"
             />,
@@ -59,7 +57,7 @@ class Register extends React.Component {
             rules: [{ required: true, message: 'Please input your Password!' }],
           })(
             <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon type="lock" className="custom-prefix-icon" />}
               type="password"
               size="large"
               placeholder="Password"
@@ -68,7 +66,7 @@ class Register extends React.Component {
         </Form.Item>
         <Form.Item>
           <Button
-            style={{ width: '100%' }}
+            className="custom-button"
             type="primary"
             size="large"
             htmlType="submit">

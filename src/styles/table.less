@@ -1,0 +1,29 @@
+@import (once) "../../node_modules/antd/dist/antd.less";
+
+.custom-table {
+  .ant-table-thead > tr > th.ant-table-column-sort {
+    background-color: transparent;
+  }
+  .ant-table-tbody > tr > td.ant-table-column-sort {
+    background-color: lighten(@primary-color, 40%);
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0 5px;
+
+    tr {
+      & > td {
+        padding: 10px;
+        background-color: #ffffff;
+      }
+      & > th { background-color: transparent; }
+      & > td, & > th { border: none !important; }
+      & > td:first-child, & > th:first-child { border-top-left-radius: 8px; }
+      & > td:last-child, & > th:last-child { border-top-right-radius: 8px; }
+      & > td:first-child, & > th:first-child { border-bottom-left-radius: 8px; }
+      & > td:last-child, & > th:last-child { border-bottom-right-radius: 8px; }
+    }
+
+  }
+}
