@@ -1,5 +1,7 @@
 ### This is a boilerplate for React project.
 
+![ScreenShot](./screenshot.png)
+
 #### It uses the following modules:
 1. [React](https://reactjs.org) ([Create React App](https://github.com/facebook/create-react-app))
 2. [Redux](https://redux.js.org) ([Redux Thunk](https://github.com/gaearon/redux-thunk))
@@ -36,23 +38,35 @@ my-app
 └── src
     └── api
        └── instance.js
+    └── config
+       └── cruds
+            └── user.js
+       └── locale.js
+       └── menus.js
+       └── routes.js
     └── components
-       └── AsyncComponent.js
+       └── Auth
+       └── Crud
+       └── Layout
+       └── Shared
+    └── img
+       └── logo.png
     └── pages
-        └── Layout.js
+       └── 404.js
+       └── Layout.js
+       └── ...
     └── state(Redux)
-        └── store.js
-        └── reducers.js
-    └── styles(Less and styled components)
-        └── index.less
+       └── store.js
+       └── reducers.js
+    └── styles(Less)
+       └── index.less
     └── utils
     └── index.js
-    └──  routes.js
 ```
 
 #### Add news routes
 
-Adding routes, modify src/routes.js file:
+Adding routes, modify src/config/routes.js file:
 
 ```javascript
 import Home from './pages/Home';
@@ -66,14 +80,11 @@ export default [
 Code Splitting:
 
 ```javascript
+const AsyncAbout = lazy(() => import('../pages/About.js'));
+
 export default [
-  // path, component, exact
-  createRoute(
-    '/home',
-    asyncComponent(() =>
-      import('./pages/Home.js').then(module => module.default),
-    ),
-  ),
+  // path, component, exact(default false)
+  createRoute('/about', AsyncAbout),
 ];
 ```
 

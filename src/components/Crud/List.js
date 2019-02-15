@@ -34,6 +34,7 @@ const List = ({
           title: 'Actions',
           key: '',
           align: 'right',
+          width: 45 * addActions.length,
           render: (value, record) =>
             addActions.map(action => (
               <Tooltip key={action.icon} title={action.text}>
