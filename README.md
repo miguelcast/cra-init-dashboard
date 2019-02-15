@@ -1,4 +1,4 @@
-### This is a boilerplate for React project.
+### React Starter Kit Dashboard.
 
 ![ScreenShot](./screenshot.png)
 
