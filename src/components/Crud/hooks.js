@@ -8,13 +8,25 @@ const typeSorter = {
   bool: sortBool,
 };
 
+const resolveRender = field => {
+  if (field.type === 'radio' && !field.render) {
+    field.render = text => field.options[text];
+  }
+  return field.render;
+};
+
 const fieldsToColumns = fields => {
   return fields.map(field => ({
     title: field.title || '',
     key: field.key,
     dataIndex: field.key,
-    sorter: field.sorter === true ? typeSorter[field.type](field.key) : false,
-    render: field.render,
+    sorter:
+      field.sorter !== true
+        ? false
+        : typeSorter[field.type]
+        ? typeSorter[field.type](field.key)
+        : typeSorter.string(field.key),
+    render: resolveRender(field),
     ...(field.columnStyle || {}),
   }));
 };
@@ -27,7 +39,7 @@ export function useCrudList(conf) {
   useEffect(() => {
     setLoading(true);
     instance
-      .get(conf.get)
+      .get(conf.getList)
       .then(response => {
         setLoading(false);
         setDataSource(response.data);
@@ -38,16 +50,52 @@ export function useCrudList(conf) {
       });
   }, []);
 
-  return { columns, dataSource, loading };
-}
-
-export function useCrudForm(conf) {
-  const [loading, setLoading] = useState(false);
-
-  const onSubmit = values => {
+  const onDelete = key => {
     setLoading(true);
     instance
-      .post(conf.post, values)
+      .delete(conf.delete, { params: { [conf.keyName]: key } })
+      .then(response => {
+        setLoading(false);
+      })
+      .catch(e => {
+        setLoading(false);
+        console.log(e);
+      });
+  };
+
+  return { columns, dataSource, onDelete, loading };
+}
+
+export function useCrudForm(conf, key) {
+  const [loading, setLoading] = useState(false);
+  const [fields, setFields] = useState(conf.fields);
+
+  useEffect(() => {
+    if (key) {
+      setLoading(true);
+      instance
+        .get(conf.getByKey, { params: { [conf.keyName || 'key']: key } })
+        .then(response => {
+          setLoading(false);
+          setFields(
+            fields.map(field => ({
+              ...field,
+              value: response.data[field.key],
+            })),
+          );
+        })
+        .catch(err => {
+          setLoading(false);
+          console.log(err);
+        });
+    }
+  }, []);
+
+  const onSubmit = values => {
+    console.log('Your form', values);
+    setLoading(true);
+    instance
+      .post(conf.post, { ...values, [conf.keyName || 'key']: key || undefined })
       .then(response => {
         setLoading(false);
       })
@@ -57,5 +105,5 @@ export function useCrudForm(conf) {
       });
   };
 
-  return { fields: conf.fields, onSubmit, loading };
+  return { fields, onSubmit, loading };
 }

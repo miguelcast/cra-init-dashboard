@@ -4,6 +4,7 @@ const menus = {
   primary: [
     createMenu('/', 'Home', 'home'),
     createMenu('/about', 'About', 'rocket'),
+    createMenu('/list', 'Users', 'team'),
   ],
   header: [
     createMenu('/register', 'Register', 'user'),

@@ -5,15 +5,34 @@ import userConfig from '../config/cruds/user';
 
 const List = props => {
   const { history } = props;
-  const { columns, dataSource, loading } = useCrudList(userConfig);
+  const { columns, dataSource, onDelete, loading } = useCrudList(userConfig);
   return (
     <ListCrud
       title="Users"
       columns={columns}
       dataSource={dataSource}
-      addButton={{ text: 'Add User', icon: 'user-add' }}
+      addButtons={[
+        {
+          text: 'Add User',
+          icon: 'user-add',
+          onClick: () => history.push('/form'),
+        },
+      ]}
+      addActions={[
+        {
+          text: 'Edit',
+          icon: 'edit',
+          onClick: record =>
+            history.push(`/form/${record[userConfig.keyName]}`),
+        },
+        {
+          text: 'Delete',
+          icon: 'delete',
+          confirm: 'Are you sure?',
+          onClick: record => onDelete(record[userConfig.keyName]),
+        },
+      ]}
       loading={loading}
-      onAction={() => history.push('/form')}
     />
   );
 };

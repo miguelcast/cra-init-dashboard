@@ -16,5 +16,5 @@ export default [
   createRoute('/login', AsyncLogin),
   createRoute('/forgotPassword', AsyncForgotPass),
   createRoute('/list', AsyncList),
-  createRoute('/form', AsyncForm),
+  createRoute('/form/:id?', AsyncForm),
 ];

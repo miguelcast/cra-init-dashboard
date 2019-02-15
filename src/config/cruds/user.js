@@ -1,6 +1,9 @@
 const user = {
-  get: '/users.json',
+  keyName: 'key',
+  getList: '/users.json',
+  getByKey: 'user.json',
   post: '/postUser.json',
+  delete: '/deleteUser.json',
   fields: [
     {
       title: 'Name',
@@ -32,11 +35,22 @@ const user = {
       rules: [{ max: 150, message: 'Max 150 characters!' }],
     },
     {
+      title: 'Gender',
+      key: 'gender',
+      sorter: true,
+      type: 'radio',
+      options: {
+        male: 'Male',
+        female: 'Female',
+      },
+      rules: [{ required: true, message: 'Is required!' }],
+    },
+    {
       title: 'Status',
       key: 'status',
       sorter: true,
       type: 'bool',
-      default: true,
+      initialValue: true,
       render: (text, record) => (record.status ? 'Active' : 'Inactive'),
     },
   ],

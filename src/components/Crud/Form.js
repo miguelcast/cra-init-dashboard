@@ -1,38 +1,9 @@
 import React, { Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-  Form as FormAntd,
-  Input,
-  InputNumber,
-  Checkbox,
-  Button,
-  Row,
-  Col,
-} from 'antd';
+import { Form as FormAntd, Button, Row, Col } from 'antd';
 import { Title } from '../Shared';
-
-const getForm = (field, getFieldDecorator) => {
-  switch (field.type) {
-    case 'number': {
-      return getFieldDecorator(field.key, {
-        rules: field.rules,
-      })(<InputNumber />);
-    }
-    case 'bool': {
-      return getFieldDecorator(field.key, {
-        rules: field.rules,
-        initialValue: field.default,
-      })(<Checkbox />);
-    }
-    default:
-    case 'string': {
-      return getFieldDecorator(field.key, {
-        rules: field.rules,
-      })(<Input />);
-    }
-  }
-};
+import getForm from './typeForms';
 
 const formItemLayout = {
   labelCol: {
@@ -110,4 +81,14 @@ Form.defaultProps = {
   loading: false,
 };
 
-export default withRouter(FormAntd.create()(Form));
+export default withRouter(
+  FormAntd.create({
+    mapPropsToFields(props) {
+      let dataForm = {};
+      props.fields.forEach(field => {
+        dataForm[field.key] = FormAntd.createFormField(field);
+      });
+      return dataForm;
+    },
+  })(Form),
+);
