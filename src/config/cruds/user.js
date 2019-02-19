@@ -9,6 +9,7 @@ const user = {
       title: 'Name',
       key: 'name',
       sorter: true,
+      filter: true,
       type: 'string',
       rules: [
         { required: true, message: 'Is required!' },
@@ -20,6 +21,7 @@ const user = {
       title: 'Age',
       key: 'age',
       sorter: true,
+      filter: true,
       type: 'number',
       columnStyle: {
         align: 'right',
@@ -31,14 +33,16 @@ const user = {
       title: 'Address',
       key: 'address',
       sorter: true,
+      filter: true,
       type: 'string',
       rules: [{ max: 150, message: 'Max 150 characters!' }],
     },
     {
       title: 'Gender',
       key: 'gender',
-      sorter: true,
       type: 'radio',
+      sorter: true,
+      filter: true,
       options: {
         male: 'Male',
         female: 'Female',
@@ -49,9 +53,13 @@ const user = {
       title: 'Status',
       key: 'status',
       sorter: true,
+      filter: true,
       type: 'bool',
       initialValue: true,
-      render: (text, record) => (record.status ? 'Active' : 'Inactive'),
+      options: {
+        true: 'Active',
+        false: 'Inactive',
+      },
     },
   ],
 };

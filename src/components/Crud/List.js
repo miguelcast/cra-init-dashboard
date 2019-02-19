@@ -28,6 +28,7 @@ const List = ({
       </Col>
     </Row>
     <Table
+      scroll={{ x: true }}
       columns={[
         ...columns,
         {
@@ -44,11 +45,15 @@ const List = ({
                     title={action.confirm}
                     placement="bottomRight"
                     onConfirm={() => action.onClick(record)}>
-                    <Button type="ghost" shape="circle" icon={action.icon} />
+                    <Button
+                      type={action.type || 'ghost'}
+                      shape="circle"
+                      icon={action.icon}
+                    />
                   </Popconfirm>
                 ) : (
                   <Button
-                    type="ghost"
+                    type={action.type || 'ghost'}
                     shape="circle"
                     icon={action.icon}
                     onClick={() => action.onClick(record)}

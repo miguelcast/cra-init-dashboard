@@ -22,17 +22,24 @@ const List = props => {
         {
           text: 'Edit',
           icon: 'edit',
+          type: 'primary',
           onClick: record =>
             history.push(`/form/${record[userConfig.keyName]}`),
         },
         {
           text: 'Delete',
           icon: 'delete',
+          type: 'danger',
           confirm: 'Are you sure?',
           onClick: record => onDelete(record[userConfig.keyName]),
         },
       ]}
       loading={loading}
+      pagination={{
+        pageSize: 20,
+        showQuickJumper: true,
+        showSizeChanger: true,
+      }}
     />
   );
 };

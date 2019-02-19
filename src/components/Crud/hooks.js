@@ -1,6 +1,9 @@
-import { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Icon } from 'antd';
 import instance from '../../api/instance';
 import { sortNumber, sortString, sortBool } from '../../utils/general';
+import SearchTableFilter from './SearchTableFilter';
 
 const typeSorter = {
   string: sortString,
@@ -11,8 +14,70 @@ const typeSorter = {
 const resolveRender = field => {
   if (field.type === 'radio' && !field.render) {
     field.render = text => field.options[text];
+  } else if (field.type === 'bool' && !field.render) {
+    field.render = (text, record) =>
+      record[field.key] ? field.options['true'] : field.options['false'];
   }
   return field.render;
+};
+
+const FilterIcon = filtered => (
+  <Icon
+    type="search"
+    style={{
+      color: filtered ? 'white' : 'black',
+      background: filtered ? '#1890ff' : undefined,
+    }}
+  />
+);
+
+FilterIcon.propTypes = {
+  filtered: PropTypes.bool,
+};
+
+const resolveFilter = field => {
+  if (field.filter === true) {
+    switch (field.type) {
+      case 'number':
+      case 'string': {
+        return {
+          filterDropdown: SearchTableFilter,
+          filterIcon: FilterIcon,
+          onFilter: (value, record) =>
+            record[field.key]
+              .toString()
+              .toLowerCase()
+              .includes(value.toLowerCase()),
+        };
+      }
+      case 'radio': {
+        const keysOptions = Object.keys(field.options);
+        return {
+          filters: keysOptions.map(value => ({
+            value,
+            text: field.options[value],
+          })),
+          filterMultiple: keysOptions.length > 2,
+          onFilter: (value, record) => record[field.key].indexOf(value) === 0,
+        };
+      }
+      case 'bool': {
+        const keysOptions = Object.keys(field.options);
+        return {
+          filters: keysOptions.map(value => ({
+            value,
+            text: field.options[value],
+          })),
+          filterMultiple: false,
+          onFilter: (value, record) => record[field.key].toString() === value,
+        };
+      }
+      default: {
+        return {};
+      }
+    }
+  }
+  return undefined;
 };
 
 const fieldsToColumns = fields => {
@@ -28,6 +93,7 @@ const fieldsToColumns = fields => {
         : typeSorter.string(field.key),
     render: resolveRender(field),
     ...(field.columnStyle || {}),
+    ...(resolveFilter(field) || {}),
   }));
 };
 

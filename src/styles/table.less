@@ -1,6 +1,17 @@
 @import (once) "../../node_modules/antd/dist/antd.less";
 
 .custom-table {
+  .custom-search-filter {
+    padding: 8px;
+    width: 220px;
+  }
+
+  .ant-table-filter-dropdown-btns {
+    & > a {
+      padding: 0 5px;
+    }
+  }
+
   .ant-table-thead > tr > th.ant-table-column-sort {
     background-color: transparent;
   }

@@ -3,7 +3,7 @@
  * https://ant.design/docs/react/i18n
  */
 
-import locale from 'antd/lib/locale-provider/es_ES';
+import locale from 'antd/lib/locale-provider/en_US';
 
 export default () => {
   return locale;
