@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { LocaleProvider } from 'antd';
 import './styles/index.css';
 import Layout from './pages/Layout';
-import store from './state/store';
+import store from './config/store';
 import getLocalesAntd from './config/locale';
 import * as registerServiceWorker from './registerServiceWorker';
 

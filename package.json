@@ -1,11 +1,11 @@
 {
   "name": "cra-rr4-redux-antd",
   "title": "cra rr4 redux antd",
-  "description": "Create React App, React Router v4, Redux and Ant Design",
+  "description": "Create React App, React Router v4, Rematch and Ant Design",
   "keywords": [
     "template",
     "react",
-    "redux",
+    "rematch",
     "router",
     "antd",
     "app",
@@ -26,6 +26,9 @@
     "**/event-stream": "^4.0.1"
   },
   "dependencies": {
+    "@rematch/core": "^1.0.6",
+    "@rematch/loading": "^1.1.2",
+    "@rematch/persist": "^1.1.5",
     "antd": "^3.10.3",
     "axios": "^0.18.0",
     "prop-types": "^15.6.2",
@@ -33,9 +36,7 @@
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.0.5",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "react-scripts": "^2.0.5"
   },
   "css": {
     "preprocess": "less"
@@ -72,7 +73,6 @@
     "node-less-chokidar": "^0.1.2",
     "npm-run-all": "^4.1.3",
     "prettier": "^1.12.1",
-    "redux-devtools-extension": "^2.13.2",
     "source-map-explorer": "^1.6.0"
   },
   "browserslist": [

@@ -12,18 +12,21 @@ const formShape = {
 class Login extends React.Component {
   static propTypes = {
     form: PropTypes.shape(formShape).isRequired,
+    loading: PropTypes.bool,
+    authentication: PropTypes.func,
   };
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        this.props.authentication(values.userName, values.password);
       }
     });
   };
 
   render() {
+    const { loading } = this.props;
     const { getFieldDecorator } = this.props.form;
     return (
       <Form onSubmit={this.handleSubmit} className="custom-form-login">
@@ -66,6 +69,7 @@ class Login extends React.Component {
             type="primary"
             size="large"
             htmlType="submit"
+            loading={loading}
             className="custom-button">
             Log in
           </Button>

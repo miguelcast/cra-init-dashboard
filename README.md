@@ -36,7 +36,7 @@ my-app
 ├── public
 │   └──  index.html
 └── src
-    └── api
+    └── services
        └── instance.js
     └── config
        └── cruds

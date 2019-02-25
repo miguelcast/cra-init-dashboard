@@ -9,11 +9,12 @@ export const createRoute = (url, component, exact = false) => ({
 });
 
 const nextMenuIndex = nextNumber();
-export const createMenu = (url, title, icon) => ({
+export const createMenu = (url, title, icon, when) => ({
   index: nextMenuIndex(),
   title,
   path: url,
   icon,
+  when,
 });
 
 export const sortString = key => (a, b) =>

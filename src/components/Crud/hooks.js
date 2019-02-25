@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'antd';
-import instance from '../../api/instance';
+import instance from '../../services/instance';
 import { sortNumber, sortString, sortBool } from '../../utils/general';
 import SearchTableFilter from './SearchTableFilter';
 
@@ -140,7 +140,9 @@ export function useCrudForm(conf, key) {
     if (key) {
       setLoading(true);
       instance
-        .get(conf.getByKey, { params: { [conf.keyName || 'key']: key } })
+        .get(`${conf.getByKey}/${key}`, {
+          params: { [conf.keyName || 'key']: key },
+        })
         .then(response => {
           setLoading(false);
           setFields(
@@ -158,7 +160,6 @@ export function useCrudForm(conf, key) {
   }, []);
 
   const onSubmit = values => {
-    console.log('Your form', values);
     setLoading(true);
     instance
       .post(conf.post, { ...values, [conf.keyName || 'key']: key || undefined })

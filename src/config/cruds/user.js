@@ -1,7 +1,7 @@
 const user = {
   keyName: 'key',
-  getList: '/users.json',
-  getByKey: 'user.json',
+  getList: '/users',
+  getByKey: '/user',
   post: '/postUser.json',
   delete: '/deleteUser.json',
   fields: [
