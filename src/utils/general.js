@@ -17,6 +17,12 @@ export const createMenu = (url, title, icon, when) => ({
   when,
 });
 
+export const createComponent = (component, when) => ({
+  index: nextMenuIndex(),
+  component,
+  when,
+});
+
 export const sortString = key => (a, b) =>
   a[key] ? a[key].localeCompare(b[key]) : true;
 export const sortNumber = key => (a, b) => a[key] - b[key];

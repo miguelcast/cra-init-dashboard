@@ -13,6 +13,11 @@ const auth = {
       ...payload,
       isAuthenticated: !!payload.token,
     }),
+    setLogout: () => ({
+      token: null,
+      user: {},
+      isAuthenticated: false,
+    }),
   },
   effects: {
     async authentication(credentials) {
@@ -27,6 +32,10 @@ const auth = {
       } catch (e) {
         this.setAuthenticated({ user: {}, token: null });
       }
+    },
+    logout() {
+      instance.removeToken();
+      this.setLogout();
     },
   },
 };

@@ -1,5 +1,6 @@
-import { createMenu } from '../utils/general';
+import { createMenu, createComponent } from '../utils/general';
 import { GUEST, LOGGED } from './constants';
+import { HeaderUser } from '../components/Layout';
 
 const menus = {
   primary: [
@@ -10,6 +11,7 @@ const menus = {
   header: [
     createMenu('/register', 'Register', 'user', GUEST),
     createMenu('/login', 'Login', 'login', GUEST),
+    createComponent(() => HeaderUser, LOGGED),
   ],
 };
 

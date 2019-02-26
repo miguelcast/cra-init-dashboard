@@ -15,7 +15,7 @@ const Header = ({ pathname, isCollapsed, showDrawer, drawerVisible }) => (
           />
         )}
       </Col>
-      <Col span={12} order={2} className="custom-align-right">
+      <Col span={18} order={2} className="custom-align-right">
         <MenuHeader isCollapse={isCollapsed} pathname={pathname} />
       </Col>
     </Row>

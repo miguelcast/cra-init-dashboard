@@ -4,7 +4,7 @@ import { GUEST, LOGGED } from '../../config/constants';
 import myMenus from '../../config/menus';
 
 export function useMenu(position) {
-  const isAuth = useAuthenticated();
+  const { isAuthenticated } = useAuthenticated();
   const [menus, setMenus] = useState(myMenus[position]);
 
   useEffect(() => {
@@ -12,12 +12,12 @@ export function useMenu(position) {
       myMenus[position].filter(menu => {
         return (
           menu.when === undefined ||
-          (isAuth === false && menu.when === GUEST) ||
-          (isAuth === true && menu.when === LOGGED)
+          (isAuthenticated === false && menu.when === GUEST) ||
+          (isAuthenticated === true && menu.when === LOGGED)
         );
       }),
     );
-  }, [isAuth]);
+  }, [isAuthenticated]);
 
   return menus;
 }

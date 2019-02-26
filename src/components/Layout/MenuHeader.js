@@ -12,16 +12,23 @@ const MenuHeader = ({ pathname, isCollapse, ...rest }) => {
       selectedKeys={[pathname || '/']}
       style={{ height: 64, marginTop: isCollapse ? '-3px' : 0 }}
       {...rest}>
-      {menus.map(item => (
-        <Menu.Item key={item.path} className="custom-menu-item-header">
-          <Link to={item.path}>
-            {item.icon && (
-              <Icon type={item.icon} className="custom-menu-header-item-icon" />
-            )}
-            <span className="nav-text custom-align-middle">{item.title}</span>
-          </Link>
-        </Menu.Item>
-      ))}
+      {menus.map(
+        ({ path, icon, title }) =>
+          path && (
+            <Menu.Item key={path} className="custom-menu-item-header">
+              <Link to={path}>
+                {icon && (
+                  <Icon type={icon} className="custom-menu-header-item-icon" />
+                )}
+                <span className="nav-text custom-align-middle">{title}</span>
+              </Link>
+            </Menu.Item>
+          ),
+      )}
+      {menus.map(
+        ({ component, index }) =>
+          component && React.createElement(component(), { key: index }, null),
+      )}
     </Menu>
   );
 };
