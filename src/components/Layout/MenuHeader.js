@@ -27,7 +27,7 @@ const MenuHeader = ({ pathname, isCollapse, ...rest }) => {
       )}
       {menus.map(
         ({ component, index }) =>
-          component && React.createElement(component(), { key: index }, null),
+          component && React.createElement(component, { key: index }, null),
       )}
     </Menu>
   );

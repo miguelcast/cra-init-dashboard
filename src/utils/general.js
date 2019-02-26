@@ -1,10 +1,11 @@
 export const nextNumber = (next = 1) => () => next++;
 
 const nextRouteIndex = nextNumber();
-export const createRoute = (url, component, exact = false) => ({
+export const createRoute = (url, component, when = null, exact = false) => ({
   index: nextRouteIndex(),
   path: url,
   component,
+  when,
   exact,
 });
 
