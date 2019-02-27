@@ -1,11 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { Login as LoginForm, useAuthenticated } from '../components/Auth';
+import { Login as LoginForm } from '../components/Auth';
 
 const Login = props => {
-  const { isAuthenticated = false } = useAuthenticated();
-  return isAuthenticated ? <Redirect to="/" /> : <LoginForm {...props} />;
+  return <LoginForm {...props} />;
 };
 
 const mapState = state => ({
