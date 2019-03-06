@@ -1,4 +1,4 @@
-### React Starter Kit Dashboard.
+<h1 align="center">React Starter Kit Dashboard</h1>
 
 ![ScreenShot](./screenshot.png)
 
@@ -108,7 +108,6 @@ import Login from './pages/login';
 import List from './pages/List';
 
 export default [
-  // path, component, exact
   createRoute('/', Home, null, true),
   createRoute('/login', Login, GUEST),
   createRoute('/list', List, LOGGED),
@@ -126,7 +125,6 @@ Code Splitting:
 const AsyncAbout = lazy(() => import('../pages/About.js'));
 
 export default [
-  // path, component, exact(default false)
   createRoute('/about', AsyncAbout),
 ];
 ```
@@ -142,7 +140,7 @@ const menus = {
       '/', // (string) URL to navigate (previously configured in the routes )
       'Home', // (string) Title
       'home', // (string) Icon name from https://feathericons.com/
-      GUEST // (string "logged" or "guest") which is the same as the paragraph above about to routes
+      GUEST // (string "logged" or "guest") The same as explained in the paragraph above
     ),
   ],
   header: [
