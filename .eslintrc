@@ -20,7 +20,8 @@
       "bracketSpacing": true,
       "jsxBracketSameLine": true
     }],
-    "react-hooks/rules-of-hooks": "error"
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "extends": [
     "plugin:react/recommended",
