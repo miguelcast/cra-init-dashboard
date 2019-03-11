@@ -6,6 +6,7 @@ export default [
     address: '10 Downing Street',
     status: true,
     gender: 'male',
+    birthday: '1990-04-13',
   },
   {
     key: '2',
@@ -14,6 +15,7 @@ export default [
     address: '14 Downing Street',
     status: false,
     gender: 'female',
+    birthday: '1990-04-14',
   },
   {
     key: '3',
@@ -22,5 +24,6 @@ export default [
     address: '10 Downing Street',
     status: true,
     gender: 'male',
+    birthday: '1990-04-15',
   },
 ];

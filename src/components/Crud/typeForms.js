@@ -1,8 +1,14 @@
-import { Input, InputNumber, Switch, Radio } from 'antd';
+import { Input, InputNumber, Switch, Radio, DatePicker } from 'antd';
 import React from 'react';
 
 const getForm = (field, getFieldDecorator) => {
   switch (field.type) {
+    case 'date': {
+      return getFieldDecorator(field.key, {
+        rules: field.rules,
+        initialValue: field.initialValue || undefined,
+      })(<DatePicker {...field.config} />);
+    }
     case 'number': {
       return getFieldDecorator(field.key, {
         rules: field.rules,

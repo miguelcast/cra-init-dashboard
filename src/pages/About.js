@@ -8,7 +8,7 @@ const About = () => {
     <div>
       <Title text="About" />
       <Link to="/">
-        <Button icon="home" type="primary" size="large">
+        <Button htmlType="button" icon="home" type="primary" size="large">
           Go to Home
         </Button>
       </Link>

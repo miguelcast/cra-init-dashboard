@@ -50,6 +50,13 @@ const user = {
       rules: [{ required: true, message: 'Is required!' }],
     },
     {
+      title: 'Birthday',
+      key: 'birthday',
+      type: 'date',
+      sorter: true,
+      filter: true,
+    },
+    {
       title: 'Status',
       key: 'status',
       sorter: true,

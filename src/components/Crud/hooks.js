@@ -4,6 +4,7 @@ import { Icon } from 'antd';
 import instance from '../../services/instance';
 import { sortNumber, sortString, sortBool } from '../../utils/general';
 import SearchTableFilter from './SearchTableFilter';
+import DateTableFilter from './DateTableFilter';
 
 const typeSorter = {
   string: sortString,
@@ -38,10 +39,12 @@ FilterIcon.propTypes = {
 const resolveFilter = field => {
   if (field.filter === true) {
     switch (field.type) {
+      case 'date':
       case 'number':
       case 'string': {
         return {
-          filterDropdown: SearchTableFilter,
+          filterDropdown:
+            field.type === 'date' ? DateTableFilter : SearchTableFilter,
           filterIcon: FilterIcon,
           onFilter: (value, record) =>
             record[field.key]
