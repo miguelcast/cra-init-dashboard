@@ -5,11 +5,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { LocaleProvider } from 'antd';
 import { getPersistor } from '@rematch/persist';
 import { PersistGate } from 'redux-persist/integration/react';
-import './styles/index.css';
 import Layout from './pages/Layout';
 import store from './config/store';
 import getLocalesAntd from './config/locale';
 import * as registerServiceWorker from './registerServiceWorker';
+import './styles/index.less';
 
 const persistor = getPersistor();
 

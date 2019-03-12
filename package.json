@@ -29,7 +29,7 @@
     "@rematch/core": "^1.0.6",
     "@rematch/loading": "^1.1.2",
     "@rematch/persist": "^1.1.5",
-    "antd": "^3.10.3",
+    "antd": "^3.15.0",
     "axios": "^0.18.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
@@ -51,17 +51,13 @@
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
     "precommit": "lint-staged",
-    "build-css": "node-less-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-less-chokidar src/ -o src/ --watch --recursive --scripts-prepend-node-path",
-    "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
-    "build-js": "react-scripts build",
-    "build": "npm-run-all build-css build-js",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.7.0",
+    "customize-cra": "^0.2.12",
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-standard": "12.0.0",
     "eslint-plugin-node": "^8.0.1",
@@ -70,10 +66,11 @@
     "eslint-plugin-react-hooks": "^1.5.0",
     "eslint-plugin-standard": "^4.0.0",
     "husky": "^1.3.1",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "lint-staged": "^8.1.5",
-    "node-less-chokidar": "^0.4.1",
-    "npm-run-all": "^4.1.3",
     "prettier": "^1.12.1",
+    "react-app-rewired": "^2.1.1",
     "source-map-explorer": "^1.6.0"
   },
   "browserslist": [
