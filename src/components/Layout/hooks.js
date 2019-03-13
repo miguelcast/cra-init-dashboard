@@ -17,7 +17,7 @@ export function useMenu(position) {
         );
       }),
     );
-  }, [isAuthenticated]);
+  }, [isAuthenticated, position]);
 
   return menus;
 }

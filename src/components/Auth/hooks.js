@@ -12,6 +12,6 @@ export function useAuthenticated() {
       }
     });
     return unsubscribe;
-  }, []);
+  }, [auth]);
   return { ...(auth || {}) };
 }

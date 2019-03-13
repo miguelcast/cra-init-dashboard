@@ -117,7 +117,7 @@ export function useCrudList(conf) {
         setLoading(false);
         console.log(e);
       });
-  }, []);
+  }, [conf.getList]);
 
   const onDelete = key => {
     setLoading(true);
@@ -160,7 +160,7 @@ export function useCrudForm(conf, key) {
           console.log(err);
         });
     }
-  }, []);
+  }, [conf.getByKey, conf.keyName, fields, key]);
 
   const onSubmit = values => {
     setLoading(true);
