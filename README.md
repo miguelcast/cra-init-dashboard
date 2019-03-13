@@ -10,6 +10,12 @@
 5. [Less](http://lesscss.org) for Ant Design customization
 6. [Axios](https://github.com/axios/axios)
 
+#### Clone project
+
+```
+git clone https://github.com/miguelcast/cra-init-dashboard.git
+```
+
 #### Install dependencies:
 
 ```
