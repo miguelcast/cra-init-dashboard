@@ -2,10 +2,12 @@ import React from 'react';
 import { Menu, Icon } from 'antd';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useMenu } from './hooks';
 
 const MenuHeader = ({ pathname, isCollapse, ...rest }) => {
   const menus = useMenu('header');
+  const { t } = useTranslation();
   return (
     <Menu
       mode="horizontal"
@@ -20,7 +22,7 @@ const MenuHeader = ({ pathname, isCollapse, ...rest }) => {
                 {icon && (
                   <Icon type={icon} className="custom-menu-header-item-icon" />
                 )}
-                <span className="nav-text custom-align-middle">{title}</span>
+                <span className="nav-text custom-align-middle">{t(title)}</span>
               </Link>
             </Menu.Item>
           ),

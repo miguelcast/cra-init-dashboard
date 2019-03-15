@@ -1,0 +1,14 @@
+{
+  "menu": {
+    "home": "Inicio",
+    "about": "Sobre nosotros",
+    "register": "Registro",
+    "login": "Iniciar sesión",
+    "users": "Usuarios"
+  },
+  "common": {
+    "spanish": "Español",
+    "english": "Ingles",
+    "pageNotFound": "Página no encontrada"
+  }
+}

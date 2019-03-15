@@ -67,7 +67,7 @@ src
 |   |-- constants.js
 |   |-- cruds
 |   |   `-- user.js
-|   |-- locale.js
+|   |-- antdLocale.js
 |   |-- menus.js
 |   |-- routes.js
 |   |-- services.js

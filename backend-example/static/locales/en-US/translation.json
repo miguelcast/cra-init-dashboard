@@ -1,0 +1,14 @@
+{
+  "menu": {
+    "home": "Home",
+    "about": "About",
+    "register": "Register",
+    "login": "Login",
+    "users": "Users"
+  },
+  "common": {
+    "spanish": "Spanish",
+    "english": "English",
+    "pageNotFound": "Page not found"
+  }
+}

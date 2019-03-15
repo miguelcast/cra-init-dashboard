@@ -1,11 +1,13 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useMenu } from './hooks';
 
 const MenuPrimary = ({ pathname, ...rest }) => {
   const menus = useMenu('primary');
+  const { t } = useTranslation();
   return (
     <Menu mode="inline" selectedKeys={[pathname || '/']} {...rest}>
       {menus.map(
@@ -16,7 +18,7 @@ const MenuPrimary = ({ pathname, ...rest }) => {
                 {item.icon && (
                   <Icon type={item.icon} style={{ fontSize: '1.2rem' }} />
                 )}
-                <span className="nav-text">{item.title}</span>
+                <span className="nav-text">{t(item.title)}</span>
               </Link>
             </Menu.Item>
           ),

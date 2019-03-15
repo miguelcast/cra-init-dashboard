@@ -5,6 +5,7 @@ import users from './users';
 
 const app = express();
 
+app.use(express.static('static'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('../build'));
