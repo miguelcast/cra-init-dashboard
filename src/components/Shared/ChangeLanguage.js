@@ -12,13 +12,13 @@ const ChangeLanguage = () => {
         htmlType="button"
         type="primary"
         style={{ marginRight: 5 }}
-        onClick={() => i18n.changeLanguage(LANGUAGES.esES)}>
+        onClick={() => i18n.changeLanguage(LANGUAGES.es)}>
         {t('common.spanish')}
       </Button>
       <Button
         htmlType="button"
         type="primary"
-        onClick={() => i18n.changeLanguage(LANGUAGES.enUS)}>
+        onClick={() => i18n.changeLanguage(LANGUAGES.en)}>
         {t('common.english')}
       </Button>{' '}
     </Fragment>

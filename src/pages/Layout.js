@@ -51,41 +51,39 @@ const Document = props => {
   const toggleCollapse = () => setIsCollapsed(!isCollapsed);
 
   return (
-    <Suspense fallback={<Spin size="large" className="custom-layout-spin" />}>
-      <Layout className="custom-layout">
-        <Sider
-          width={250}
-          breakpoint="md"
-          collapsedWidth="0"
-          collapsed={isCollapsed}
-          onCollapse={toggleCollapse}
-          className="custom-layout-sider">
-          <Logo />
-          <strong className="custom-menu-title">Dashboard</strong>
-          <MenuPrimary pathname={pathname} />
-        </Sider>
-        <Drawer
-          title={<Logo />}
-          placement="left"
-          onClose={onClose}
-          visible={visible}
-          bodyStyle={{ padding: 0, margin: 0 }}>
-          <MenuPrimary pathname={pathname} onClick={onClose} />
-        </Drawer>
-        <Layout style={{ marginLeft: isCollapsed ? 0 : 250 }}>
-          <Header
-            pathname={pathname}
-            isCollapsed={isCollapsed}
-            showDrawer={showDrawer}
-            drawerVisible={visible}
-          />
-          <Content className="custom-layout-content">
-            <Routes />
-          </Content>
-          <Footer>Footer</Footer>
-        </Layout>
+    <Layout className="custom-layout">
+      <Sider
+        width={250}
+        breakpoint="md"
+        collapsedWidth="0"
+        collapsed={isCollapsed}
+        onCollapse={toggleCollapse}
+        className="custom-layout-sider">
+        <Logo />
+        <strong className="custom-menu-title">Dashboard</strong>
+        <MenuPrimary pathname={pathname} />
+      </Sider>
+      <Drawer
+        title={<Logo />}
+        placement="left"
+        onClose={onClose}
+        visible={visible}
+        bodyStyle={{ padding: 0, margin: 0 }}>
+        <MenuPrimary pathname={pathname} onClick={onClose} />
+      </Drawer>
+      <Layout style={{ marginLeft: isCollapsed ? 0 : 250 }}>
+        <Header
+          pathname={pathname}
+          isCollapsed={isCollapsed}
+          showDrawer={showDrawer}
+          drawerVisible={visible}
+        />
+        <Content className="custom-layout-content">
+          <Routes />
+        </Content>
+        <Footer>Footer</Footer>
       </Layout>
-    </Suspense>
+    </Layout>
   );
 };
 

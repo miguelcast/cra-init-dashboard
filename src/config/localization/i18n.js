@@ -37,7 +37,12 @@ export default i18next
   .use(initReactI18next)
   .init(
     {
+      whitelist: Object.values(LANGUAGES),
       fallbackLng: LANGUAGES.default,
+      // have a common namespace used around the full app
+      ns: 'translation',
+      defaultNS: 'translation',
+      debug: process.env.NODE_ENV === 'development',
       backend: {
         backends: [LocalStorageBackend, XHR],
         backendOptions: [
@@ -53,13 +58,8 @@ export default i18next
           },
         ],
       },
-      // have a common namespace used around the full app
-      ns: 'translation',
-      defaultNS: 'translation',
-      debug: true,
     },
-    (err, t) => {
+    err => {
       if (err) return console.log('something went wrong loading', err);
-      t('key'); // -> same as i18next.t
     },
   );
