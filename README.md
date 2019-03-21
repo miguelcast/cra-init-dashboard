@@ -47,67 +47,71 @@ npm start
 ```
 src
 |-- components
-|   |-- Auth
-|   |   |-- Login.js
-|   |   |-- Register.js
-|   |   |-- hooks.js
-|   |   `-- index.js
 |   |-- Crud
 |   |   |-- Form.js
-|   |   |-- List.js
-|   |   |-- SearchTableFilter.js
-|   |   |-- hooks.js
 |   |   |-- index.js
-|   |   `-- typeForms.js
-|   |-- Layout
-|   |   |-- Header.js
-|   |   |-- HeaderUser.js
-|   |   |-- Logo.js
-|   |   |-- MenuHeader.js
-|   |   |-- MenuPrimary.js
+|   |   |-- List.js
+|   |   |-- typeForms.js
+|   |   |-- DateTableFilter.js
+|   |   |-- SearchTableFilter.js
+|   |   `-- hooks.js
+|   |-- Auth
+|   |   |-- index.js
 |   |   |-- hooks.js
-|   |   `-- index.js
-|   `-- Shared
-|       |-- Title.js
-|       `-- index.js
-|-- config
-|   |-- constants.js
-|   |-- cruds
-|   |   `-- user.js
-|   |-- antdLocale.js
-|   |-- menus.js
-|   |-- routes.js
-|   |-- services.js
-|   `-- store.js
+|   |   |-- Register.js
+|   |   `-- Login.js
+|   |-- Shared
+|   |   |-- Title.js
+|   |   |-- index.js
+|   |   `-- ChangeLanguage.js
+|   `-- Layout
+|       |-- Logo.js
+|       |-- index.js
+|       |-- hooks.js
+|       |-- MenuHeader.js
+|       |-- MenuPrimary.js
+|       |-- Header.js
+|       `-- HeaderUser.js
 |-- img
 |   `-- logo.png
-|-- index.js
-|-- models
-|   |-- auth.js
-|   |-- home.js
-|   `-- index.js
-|-- pages
-|   |-- 404.js
-|   |-- About.js
-|   |-- ForgotPassword.js
-|   |-- Form.js
-|   |-- Home.js
-|   |-- Layout.js
-|   |-- List.js
-|   |-- Login.js
-|   `-- Register.js
 |-- registerServiceWorker.js
+|-- utils
+|   `-- general.js
+|-- models
+|   |-- home.js
+|   |-- index.js
+|   `-- auth.js
+|-- config
+|   |-- services.js
+|   |-- routes.js
+|   |-- constants.js
+|   |-- menus.js
+|   |-- store.js
+|   |-- cruds
+|   |   `-- user.js
+|   `-- localization
+|       |-- antdLocale.js
+|       `-- i18n.js
+|-- index.js
 |-- services
 |   |-- auth.js
 |   `-- instance.js
 |-- styles
 |   |-- auth.less
+|   |-- title.less
 |   |-- index.less
-|   |-- layout.less
 |   |-- table.less
-|   `-- title.less
-`-- utils
-    `-- general.js
+|   `-- layout.less
+`-- pages
+    |-- Form.js
+    |-- Register.js
+    |-- Login.js
+    |-- List.js
+    |-- 404.js
+    |-- Layout.js
+    |-- About.js
+    |-- Home.js
+    `-- ForgotPassword.js
 ```
 
 #### Add news routes
