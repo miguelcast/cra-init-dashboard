@@ -1,14 +1,21 @@
-<h1 align="center">React Starter Kit Dashboard</h1>
+<h1 align="center">⚛ React Starter Kit Dashboard ⚛ </h1>
 
 ![ScreenShot](./screenshot.png)
 
+#### Features:
+* Internationalization loading files from backend with i18next
+* Easy to add new routes
+* Easy to add new menus
+* Create a CRUD very easy
+* Forms such as Sign in, Sign up and Recovery password, connected with the store
+
 #### It uses the following modules:
-1. [React](https://reactjs.org) ([Create React App](https://github.com/facebook/create-react-app))
-2. [Rematch](https://rematch.gitbooks.io/rematch/content/#getting-started)
-3. [React Router v4](https://reacttraining.com/react-router/)
-4. [Ant Design](https://ant.design)
-5. [Less](http://lesscss.org) for Ant Design customization
-6. [Axios](https://github.com/axios/axios)
+* [React](https://reactjs.org) ([Create React App](https://github.com/facebook/create-react-app))
+* [Rematch](https://rematch.gitbooks.io/rematch/content/#getting-started)
+* [React Router v4](https://reacttraining.com/react-router/)
+* [Ant Design](https://ant.design)
+* [Less](http://lesscss.org) for Ant Design customization
+* [Axios](https://github.com/axios/axios)
 
 #### Clone project
 
