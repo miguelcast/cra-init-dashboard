@@ -9,6 +9,40 @@
   "common": {
     "spanish": "Spanish",
     "english": "English",
-    "pageNotFound": "Page not found"
+    "pageNotFound": "Page not found",
+    "usernameRequired": "Please input your username!",
+    "emailRequired": "Please input your email address!",
+    "invalidEmail": "Invalid email address",
+    "email": "Email",
+    "password": "Password",
+    "passwordRequired": "Please input your Password!",
+    "or": "Or",
+    "logout": "Logout",
+    "return": "Return"
+  },
+  "home": {
+    "title": "Home",
+    "goToAbout": "Go to About"
+  },
+  "about": {
+    "title": "About",
+    "goToHome": "Go to home"
+  },
+  "register": {
+    "title": "Register",
+    "name": "Name",
+    "nameRequired": "Please input your name!",
+    "signIn": "Sign in"
+  },
+  "login": {
+    "title": "Login",
+    "forgotPassword": "Forgot password",
+    "login": "Login",
+    "registerNow": "register now!"
+  },
+  "forgotPassword": {
+    "title": "Forgot password",
+    "description": "Please, input your email address associated with the application.",
+    "send": "Send"
   }
 }

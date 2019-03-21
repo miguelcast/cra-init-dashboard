@@ -1,30 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from 'antd';
 import { Title } from '../components/Shared';
 
-const Home = ({ str }) => {
+const Home = () => {
+  const { t } = useTranslation();
   return (
     <div>
-      <Title text="Home" />
+      <Title text={t('home.title')} />
       <Link to="about">
-        <Button type="primary" size="large">
-          Go to About
+        <Button htmlType="button" type="primary" size="large">
+          {t('home.goToAbout')}
         </Button>
-      </Link>{' '}
-      {str}
+      </Link>
     </div>
   );
 };
 
-Home.propTypes = {
-  str: PropTypes.string,
-};
-
-const mapStateToProps = state => ({
-  str: state.home,
-});
-
-export default connect(mapStateToProps)(Home);
+export default Home;

@@ -11,9 +11,10 @@ const ChangeLanguage = () => {
       <Button
         htmlType="button"
         type="primary"
+        style={{ marginRight: 5 }}
         onClick={() => i18n.changeLanguage(LANGUAGES.esES)}>
         {t('common.spanish')}
-      </Button>{' '}
+      </Button>
       <Button
         htmlType="button"
         type="primary"

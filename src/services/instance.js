@@ -7,7 +7,7 @@ class AxiosCreate {
     const headers = {};
 
     this._instance = axios.create({
-      baseURL: process.env.REACT_APP_API || 'http://localhost:3001',
+      baseURL: process.env.REACT_APP_API || 'http://localhost:3005',
       headers,
     });
   }

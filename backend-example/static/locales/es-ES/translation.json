@@ -9,6 +9,40 @@
   "common": {
     "spanish": "Español",
     "english": "Ingles",
-    "pageNotFound": "Página no encontrada"
+    "pageNotFound": "Página no encontrada",
+    "usernameRequired": "Debe ingresar el nombre de usuario!",
+    "emailRequired": "Debe ingresar el email!",
+    "invalidEmail": "Email incorrecto!",
+    "email": "Email",
+    "password": "Contraseña",
+    "passwordRequired": "Debe ingresar la contraseña!",
+    "or": "O",
+    "logout": "Cerrar sesión",
+    "return": "Regresar"
+  },
+  "home": {
+    "title": "Inicio",
+    "goToAbout": "Ir a Sobre nosotros"
+  },
+  "about": {
+    "title": "Sobre nosotros",
+    "goToHome": "Ir a inicio"
+  },
+  "register": {
+    "title": "Registro",
+    "name": "Nombre",
+    "nameRequired": "Debe ingresar el nombre!",
+    "signIn": "Registrarse"
+  },
+  "login": {
+    "title": "Iniciar sesión",
+    "forgotPassword": "Olvido su contraseña",
+    "login": "Iniciar sesión",
+    "registerNow": "registrate ahora!"
+  },
+  "forgotPassword": {
+    "title": "Olvido la contraseña",
+    "description": "Por favor ingresa un email asociado con la aplicación.",
+    "send": "Enviar"
   }
 }

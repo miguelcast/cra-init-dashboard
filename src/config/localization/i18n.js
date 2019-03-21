@@ -13,7 +13,7 @@ import {
 } from '../constants';
 
 const URL_API_LOCALIZATION =
-  process.env.REACT_APP_API_LOCALIZATION || 'http://localhost:3001';
+  process.env.REACT_APP_API_LOCALIZATION || 'http://localhost:3005';
 
 function loadLocales(url, options, callback) {
   axios

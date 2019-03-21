@@ -2,15 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Avatar, Dropdown, Menu, Icon } from 'antd';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
-const MenuDrop = ({ logout }) => (
-  <Menu>
-    <Menu.Item onClick={logout}>
-      <Icon type="logout" />
-      Logout
-    </Menu.Item>
-  </Menu>
-);
+const MenuDrop = ({ logout }) => {
+  const { t } = useTranslation();
+  return (
+    <Menu>
+      <Menu.Item onClick={logout}>
+        <Icon type="logout" />
+        {t('common.logout')}
+      </Menu.Item>
+    </Menu>
+  );
+};
 MenuDrop.propTypes = {
   logout: PropTypes.func,
 };

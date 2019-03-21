@@ -37,6 +37,6 @@ app.get('/user/:key', function(req, res) {
   res.json(users.find(item => item.key === req.params.key));
 });
 
-const server = app.listen(3001, function() {
+const server = app.listen(3005, function() {
   console.log('Example app listening on port ' + server.address().port);
 });

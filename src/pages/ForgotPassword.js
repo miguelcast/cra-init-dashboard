@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Icon, Input } from 'antd';
 import { withRouter } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Title } from '../components/Shared';
 
 const FormItem = Form.Item;
 
 const ForgotPassword = ({ form, history }) => {
   const { getFieldDecorator } = form;
+  const { t } = useTranslation();
 
   function onSubmit(e) {
     e.preventDefault();
@@ -20,20 +22,18 @@ const ForgotPassword = ({ form, history }) => {
 
   return (
     <Form onSubmit={onSubmit} className="custom-form-forgot">
-      <Title text="Forgot password" />
-      <span>
-        Please, input your email address associated with the application.
-      </span>
-      <FormItem label="Email">
+      <Title text={t('forgotPassword.title')} />
+      <span>{t('forgotPassword.description')}</span>
+      <FormItem label={t('common.email')}>
         {getFieldDecorator('email', {
           rules: [
-            { required: true, message: 'Please input your email address!' },
-            { type: 'email', message: 'Invalid email address' },
+            { required: true, message: t('common.emailRequired') },
+            { type: 'email', message: t('common.invalidEmail') },
           ],
         })(
           <Input
             prefix={<Icon type="mail" className="custom-prefix-icon" />}
-            placeholder="Email"
+            placeholder={t('common.email')}
             size="large"
           />,
         )}
@@ -44,12 +44,16 @@ const ForgotPassword = ({ form, history }) => {
           type="primary"
           size="large"
           htmlType="submit">
-          Send
+          {t('forgotPassword.send')}
         </Button>
       </FormItem>
       <FormItem>
-        <Button onClick={history.goBack} className="custom-button" size="large">
-          Return
+        <Button
+          htmlType="button"
+          onClick={history.goBack}
+          className="custom-button"
+          size="large">
+          {t('common.return')}
         </Button>
       </FormItem>
     </Form>
