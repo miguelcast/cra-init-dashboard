@@ -12,7 +12,7 @@
 #### It uses the following modules:
 * [React](https://reactjs.org) ([Create React App](https://github.com/facebook/create-react-app))
 * [Rematch](https://rematch.gitbooks.io/rematch/content/#getting-started)
-* [React Router v4](https://reacttraining.com/react-router/)
+* [React Router v5](https://reacttraining.com/react-router/)
 * [Ant Design](https://ant.design)
 * [Less](http://lesscss.org) for Ant Design customization
 * [Axios](https://github.com/axios/axios)
