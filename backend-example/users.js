@@ -7,6 +7,8 @@ export default [
     status: true,
     gender: 'male',
     birthday: '1990-04-13',
+    color: 'red',
+    country: 'col',
   },
   {
     key: '2',
@@ -16,6 +18,8 @@ export default [
     status: false,
     gender: 'female',
     birthday: '1990-04-14',
+    color: 'green',
+    country: 'col',
   },
   {
     key: '3',
@@ -25,5 +29,7 @@ export default [
     status: true,
     gender: 'male',
     birthday: '1990-04-15',
+    color: 'black',
+    country: 'arg',
   },
 ];

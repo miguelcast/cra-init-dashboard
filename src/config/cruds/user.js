@@ -35,7 +35,36 @@ const user = {
       sorter: true,
       filter: true,
       type: 'string',
-      rules: [{ max: 150, message: 'Max 150 characters!' }],
+      rules: [{ required: 150, message: 'Max 150 characters!' }],
+    },
+    {
+      title: 'Color',
+      key: 'color',
+      sorter: true,
+      filter: true,
+      type: 'select',
+      options: {
+        red: 'Red',
+        green: 'Green',
+        yellow: 'Yellow',
+        black: 'Black',
+      },
+      rules: [{ required: true, message: 'Is required!' }],
+    },
+    {
+      title: 'Country async load',
+      key: 'country-async-load',
+      sorter: true,
+      filter: true,
+      type: 'select',
+      options: '/countries',
+      configOptions: {
+        // { key: text }, mapper with loaded data
+        map: item => ({ [item.key]: item.name }),
+        // default get, you can use get or post;
+        method: 'get',
+      },
+      rules: [{ required: true, message: 'Is required!' }],
     },
     {
       title: 'Gender',

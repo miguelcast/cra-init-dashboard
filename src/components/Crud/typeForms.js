@@ -1,4 +1,4 @@
-import { Input, InputNumber, Switch, Radio, DatePicker } from 'antd';
+import { Input, InputNumber, Switch, Radio, DatePicker, Select } from 'antd';
 import React from 'react';
 
 const getForm = (field, getFieldDecorator) => {
@@ -38,6 +38,20 @@ const getForm = (field, getFieldDecorator) => {
             </Radio>
           ))}
         </Radio.Group>,
+      );
+    }
+    case 'select': {
+      return getFieldDecorator(field.key, {
+        rules: field.rules,
+        initialValue: field.initialValue || undefined,
+      })(
+        <Select>
+          {Object.keys(field.options).map(keyOption => (
+            <Select.Option key={keyOption} value={keyOption}>
+              {field.options[keyOption]}
+            </Select.Option>
+          ))}
+        </Select>,
       );
     }
     default:

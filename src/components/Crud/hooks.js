@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'antd';
+import axios from 'axios';
 import instance from '../../services/instance';
 import { sortNumber, sortString, sortBool } from '../../utils/general';
 import SearchTableFilter from './SearchTableFilter';
@@ -13,7 +14,7 @@ const typeSorter = {
 };
 
 const resolveRender = field => {
-  if (field.type === 'radio' && !field.render) {
+  if ((field.type === 'radio' || field.type === 'select') && !field.render) {
     field.render = text => field.options[text];
   } else if (field.type === 'bool' && !field.render) {
     field.render = (text, record) =>
@@ -41,12 +42,14 @@ const resolveFilter = field => {
     switch (field.type) {
       case 'date':
       case 'number':
+      case 'select':
       case 'string': {
         return {
           filterDropdown:
             field.type === 'date' ? DateTableFilter : SearchTableFilter,
           filterIcon: FilterIcon,
           onFilter: (value, record) =>
+            record[field.key] &&
             record[field.key]
               .toString()
               .toLowerCase()
@@ -140,27 +143,66 @@ export function useCrudForm(conf, key) {
   const [fields, setFields] = useState(conf.fields);
 
   useEffect(() => {
-    if (key) {
-      setLoading(true);
-      instance
-        .get(`${conf.getByKey}/${key}`, {
-          params: { [conf.keyName || 'key']: key },
-        })
-        .then(response => {
-          setLoading(false);
-          setFields(
-            fields.map(field => ({
-              ...field,
-              value: response.data[field.key],
-            })),
-          );
-        })
-        .catch(err => {
-          setLoading(false);
-          console.log(err);
+    async function init() {
+      try {
+        setLoading(true);
+        let valuesFields = {};
+        const promises = { all: [], keys: {} };
+        let i = 0;
+        fields.forEach(field => {
+          if (field.options && typeof field.options === 'string') {
+            const { method = 'get' } = field.configOptions;
+            promises.all.push(instance[method](field.options));
+            promises.keys[field.key] = i;
+            i += 1;
+          }
         });
+
+        const responses = await axios.all(promises.all);
+
+        if (key) {
+          const response = await instance.get(`${conf.getByKey}/${key}`, {
+            params: { [conf.keyName || 'key']: key },
+          });
+          fields.forEach(field => {
+            if (response.data[field.key]) {
+              valuesFields[field.key] = {
+                value: response.data[field.key],
+              };
+            }
+          });
+        }
+
+        setFields(
+          fields.map(field => {
+            const options =
+              promises.keys[field.key] >= 0
+                ? (responses[promises.keys[field.key]] &&
+                    responses[promises.keys[field.key]].data.reduce(
+                      (items, item) => ({
+                        ...items,
+                        ...field.configOptions.map(item),
+                      }),
+                      {},
+                    )) ||
+                  {}
+                : field.options || {};
+
+            return {
+              ...field,
+              ...(valuesFields[field.key] || {}),
+              options,
+            };
+          }),
+        );
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false);
     }
-  }, [conf.getByKey, conf.keyName, fields, key]);
+    init();
+    // eslint-disable-next-line
+  }, [key]);
 
   const onSubmit = values => {
     setLoading(true);

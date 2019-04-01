@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import users from './users';
+import countries from './countries';
 
 const app = express();
 
@@ -35,6 +36,10 @@ app.get('/users', function(req, res) {
 
 app.get('/user/:key', function(req, res) {
   res.json(users.find(item => item.key === req.params.key));
+});
+
+app.get('/countries', function(req, res) {
+  res.json(countries);
 });
 
 const server = app.listen(3005, function() {
