@@ -2,6 +2,7 @@ import React, { useMemo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'antd';
 import axios from 'axios';
+import moment from 'moment';
 import instance from '../../services/instance';
 import { sortNumber, sortString, sortBool } from '../../utils/general';
 import SearchTableFilter from './SearchTableFilter';
@@ -103,6 +104,23 @@ const fieldsToColumns = fields => {
   }));
 };
 
+const validateDependency = (
+  field,
+  allValues,
+  keys = Object.keys(allValues),
+) => {
+  if (
+    field.dependencies &&
+    field.dependencies.fields.filter(dependency => keys.includes(dependency))
+      .length > 0
+  ) {
+    return keys.reduce(
+      (allHaveValues, current) => allHaveValues && !allValues[current],
+      true,
+    );
+  }
+};
+
 export function useCrudList(conf) {
   const [dataSource, setDataSource] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -150,9 +168,12 @@ export function useCrudForm(conf, key) {
         const promises = { all: [], keys: {} };
         let i = 0;
         fields.forEach(field => {
-          if (field.options && typeof field.options === 'string') {
-            const { method = 'get' } = field.configOptions;
-            promises.all.push(instance[method](field.options));
+          if (
+            field.configOptions &&
+            typeof field.configOptions.url === 'string'
+          ) {
+            const { url, method = 'get' } = field.configOptions;
+            promises.all.push(instance[method](url));
             promises.keys[field.key] = i;
             i += 1;
           }
@@ -167,7 +188,14 @@ export function useCrudForm(conf, key) {
           fields.forEach(field => {
             if (response.data[field.key]) {
               valuesFields[field.key] = {
-                value: response.data[field.key],
+                value:
+                  field.type === 'date'
+                    ? moment(response.data[field.key])
+                    : response.data[field.key],
+                disabled:
+                  validateDependency(field, response.data) ||
+                  field.enabled ||
+                  false,
               };
             }
           });
@@ -217,5 +245,21 @@ export function useCrudForm(conf, key) {
       });
   };
 
-  return { fields, onSubmit, loading };
+  const onValuesChanged = (props, changedValues, allValues) => {
+    const keys = Object.keys(changedValues);
+    setFields(
+      fields.map(field => {
+        return {
+          ...field,
+          disabled:
+            validateDependency(field, allValues, keys) ||
+            field.enabled ||
+            false,
+          value: allValues[field.key],
+        };
+      }),
+    );
+  };
+
+  return { fields, onSubmit, loading, onValuesChanged };
 }

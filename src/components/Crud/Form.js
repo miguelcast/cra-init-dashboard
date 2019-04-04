@@ -16,14 +16,14 @@ const formItemLayout = {
   },
 };
 
-const Form = ({ title, fields, submit, loading, form, history }) => {
+const Form = ({ title, fields, onSubmit, loading, form, history }) => {
   const { getFieldDecorator } = form;
 
-  const onSubmit = e => {
+  const onSubmitForm = e => {
     e.preventDefault();
     form.validateFields((err, values) => {
       if (!err) {
-        submit(values);
+        onSubmit(values);
       }
     });
   };
@@ -31,7 +31,7 @@ const Form = ({ title, fields, submit, loading, form, history }) => {
   return (
     <Fragment>
       <Title text={title} />
-      <FormAntd onSubmit={onSubmit} layout="horizontal">
+      <FormAntd onSubmit={onSubmitForm} layout="horizontal">
         {fields.map(field => (
           <FormAntd.Item
             key={field.key}
@@ -71,7 +71,7 @@ const Form = ({ title, fields, submit, loading, form, history }) => {
 Form.propTypes = {
   title: PropTypes.string.isRequired,
   fields: PropTypes.array.isRequired,
-  submit: PropTypes.func,
+  onSubmit: PropTypes.func,
   loading: PropTypes.bool,
   form: PropTypes.object,
   history: PropTypes.object,
@@ -83,12 +83,8 @@ Form.defaultProps = {
 
 export default withRouter(
   FormAntd.create({
-    mapPropsToFields(props) {
-      let dataForm = {};
-      props.fields.forEach(field => {
-        dataForm[field.key] = FormAntd.createFormField(field);
-      });
-      return dataForm;
+    onValuesChange(props, changedValues, allValues) {
+      props.onValuesChanged(props, changedValues, allValues);
     },
   })(Form),
 );

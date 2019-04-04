@@ -1,22 +1,26 @@
-import { Input, InputNumber, Switch, Radio, DatePicker, Select } from 'antd';
 import React from 'react';
+import { Input, InputNumber, Switch, Radio, DatePicker, Select } from 'antd';
 
 const getForm = (field, getFieldDecorator) => {
+  const globalOptions = {
+    initialValue: field.value || field.initialValue || undefined,
+  };
   switch (field.type) {
     case 'date': {
       return getFieldDecorator(field.key, {
+        ...globalOptions,
         rules: field.rules,
-        initialValue: field.initialValue || undefined,
-      })(<DatePicker {...field.config} />);
+      })(<DatePicker disabled={field.disabled || false} {...field.config} />);
     }
     case 'number': {
       return getFieldDecorator(field.key, {
+        ...globalOptions,
         rules: field.rules,
-        initialValue: field.initialValue || undefined,
-      })(<InputNumber />);
+      })(<InputNumber disabled={field.disabled || false} />);
     }
     case 'bool': {
       return getFieldDecorator(field.key, {
+        ...globalOptions,
         rules: field.rules,
         valuePropName: 'checked',
         initialValue: field.hasOwnProperty('value')
@@ -24,14 +28,14 @@ const getForm = (field, getFieldDecorator) => {
           : field.hasOwnProperty('initialValue')
           ? field.initialValue
           : false,
-      })(<Switch />);
+      })(<Switch disabled={field.disabled || false} />);
     }
     case 'radio': {
       return getFieldDecorator(field.key, {
+        ...globalOptions,
         rules: field.rules,
-        initialValue: field.initialValue || undefined,
       })(
-        <Radio.Group>
+        <Radio.Group disabled={field.disabled || false}>
           {Object.keys(field.options).map(keyOption => (
             <Radio key={keyOption} value={keyOption}>
               {field.options[keyOption]}
@@ -42,10 +46,10 @@ const getForm = (field, getFieldDecorator) => {
     }
     case 'select': {
       return getFieldDecorator(field.key, {
+        ...globalOptions,
         rules: field.rules,
-        initialValue: field.initialValue || undefined,
       })(
-        <Select>
+        <Select disabled={field.disabled || false}>
           {Object.keys(field.options).map(keyOption => (
             <Select.Option key={keyOption} value={keyOption}>
               {field.options[keyOption]}
@@ -57,9 +61,9 @@ const getForm = (field, getFieldDecorator) => {
     default:
     case 'string': {
       return getFieldDecorator(field.key, {
+        ...globalOptions,
         rules: field.rules,
-        initialValue: field.initialValue || undefined,
-      })(<Input />);
+      })(<Input disabled={field.disabled || false} />);
     }
   }
 };

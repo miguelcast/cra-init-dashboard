@@ -11,6 +11,7 @@ const user = {
       sorter: true,
       filter: true,
       type: 'string',
+      initialValue: 'My Name',
       rules: [
         { required: true, message: 'Is required!' },
         { type: 'string', message: 'Should be string!' },
@@ -35,7 +36,10 @@ const user = {
       sorter: true,
       filter: true,
       type: 'string',
-      rules: [{ required: 150, message: 'Max 150 characters!' }],
+      rules: [
+        { required: true, message: 'Is required!' },
+        { max: 150, message: 'Max 150 characters!' },
+      ],
     },
     {
       title: 'Color',
@@ -53,17 +57,22 @@ const user = {
     },
     {
       title: 'Country async load',
-      key: 'country-async-load',
+      key: 'country',
       sorter: true,
       filter: true,
       type: 'select',
-      options: '/countries',
+      options: {},
       configOptions: {
+        url: '/countries',
         // { key: text }, mapper with loaded data
         map: item => ({ [item.key]: item.name }),
         // default get, you can use get or post;
         method: 'get',
       },
+      dependencies: {
+        fields: ['color'],
+      },
+      disabled: true,
       rules: [{ required: true, message: 'Is required!' }],
     },
     {
