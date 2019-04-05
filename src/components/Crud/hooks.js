@@ -89,20 +89,25 @@ const resolveFilter = field => {
 };
 
 const fieldsToColumns = fields => {
-  return fields.map(field => ({
-    title: field.title || '',
-    key: field.key,
-    dataIndex: field.key,
-    sorter:
-      field.sorter !== true
-        ? false
-        : typeSorter[field.type]
-        ? typeSorter[field.type](field.key)
-        : typeSorter.string(field.key),
-    render: resolveRender(field),
-    ...(field.columnStyle || {}),
-    ...(resolveFilter(field) || {}),
-  }));
+  return fields
+    .filter(
+      field =>
+        !(field.hasOwnProperty('hidden') && field.hidden.includes('column')),
+    )
+    .map(field => ({
+      title: field.title || '',
+      key: field.key,
+      dataIndex: field.key,
+      sorter:
+        field.sorter !== true
+          ? false
+          : typeSorter[field.type]
+          ? typeSorter[field.type](field.key)
+          : typeSorter.string(field.key),
+      render: resolveRender(field),
+      ...(field.columnStyle || {}),
+      ...(resolveFilter(field) || {}),
+    }));
 };
 
 const validateDependency = (
@@ -163,7 +168,12 @@ export function useCrudList(conf) {
 
 export function useCrudForm(conf, key) {
   const [loading, setLoading] = useState(false);
-  const [fields, setFields] = useState(conf.fields);
+  const [fields, setFields] = useState(
+    conf.fields.filter(
+      field =>
+        !(field.hasOwnProperty('hidden') && field.hidden.includes('form')),
+    ),
+  );
 
   useEffect(() => {
     async function init() {
@@ -197,7 +207,7 @@ export function useCrudForm(conf, key) {
                 value:
                   field.type === 'date'
                     ? moment(response.data[field.key])
-                    : response.data[field.key],
+                    : response.data[field.key].toString(),
               };
             }
           });

@@ -35,6 +35,7 @@ const user = {
       key: 'address',
       sorter: true,
       filter: true,
+      hidden: ['column', 'form'],
       type: 'string',
       rules: [
         { required: true, message: 'Is required!' },
@@ -71,7 +72,7 @@ const user = {
         method: 'get',
       },
       dependencies: {
-        fields: ['color', 'address'],
+        fields: ['color'],
         onChange: () => ({
           disabled: false,
         }),
