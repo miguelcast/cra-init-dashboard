@@ -16,7 +16,8 @@ const typeSorter = {
 
 const resolveRender = field => {
   if ((field.type === 'radio' || field.type === 'select') && !field.render) {
-    field.render = text => field.options[text];
+    field.render = (text, record) =>
+      field.columnKey ? record[field.columnKey] : field.options[text];
   } else if (field.type === 'bool' && !field.render) {
     field.render = (text, record) =>
       record[field.key] ? field.options['true'] : field.options['false'];
@@ -50,8 +51,8 @@ const resolveFilter = field => {
             field.type === 'date' ? DateTableFilter : SearchTableFilter,
           filterIcon: FilterIcon,
           onFilter: (value, record) =>
-            record[field.key] &&
-            record[field.key]
+            record[field.columnKey || field.key] &&
+            record[field.columnKey || field.key]
               .toString()
               .toLowerCase()
               .includes(value.toLowerCase()),
@@ -114,10 +115,14 @@ const validateDependency = (
     field.dependencies.fields.filter(dependency => keys.includes(dependency))
       .length > 0
   ) {
-    return keys.reduce(
-      (allHaveValues, current) => allHaveValues && !allValues[current],
-      true,
-    );
+    if (
+      (field.dependencies.fields || keys).reduce(
+        (allHaveValues, current) => allHaveValues && !!allValues[current],
+        true,
+      )
+    ) {
+      return field.dependencies && field.dependencies.onChange();
+    }
   }
 };
 
@@ -188,14 +193,11 @@ export function useCrudForm(conf, key) {
           fields.forEach(field => {
             if (response.data[field.key]) {
               valuesFields[field.key] = {
+                ...validateDependency(field, response.data),
                 value:
                   field.type === 'date'
                     ? moment(response.data[field.key])
                     : response.data[field.key],
-                disabled:
-                  validateDependency(field, response.data) ||
-                  field.enabled ||
-                  false,
               };
             }
           });
@@ -251,10 +253,7 @@ export function useCrudForm(conf, key) {
       fields.map(field => {
         return {
           ...field,
-          disabled:
-            validateDependency(field, allValues, keys) ||
-            field.enabled ||
-            false,
+          ...validateDependency(field, allValues, keys),
           value: allValues[field.key],
         };
       }),

@@ -9,6 +9,7 @@ export default [
     birthday: '1990-04-13',
     color: 'red',
     country: 'col',
+    countryName: 'Colombia',
   },
   {
     key: '2',
@@ -20,6 +21,7 @@ export default [
     birthday: '1990-04-14',
     color: 'green',
     country: 'col',
+    countryName: 'Colombia',
   },
   {
     key: '3',
@@ -31,5 +33,6 @@ export default [
     birthday: '1990-04-15',
     color: 'black',
     country: 'arg',
+    countryName: 'Argentina',
   },
 ];

@@ -58,6 +58,7 @@ const user = {
     {
       title: 'Country async load',
       key: 'country',
+      columnKey: 'countryName',
       sorter: true,
       filter: true,
       type: 'select',
@@ -70,7 +71,10 @@ const user = {
         method: 'get',
       },
       dependencies: {
-        fields: ['color'],
+        fields: ['color', 'address'],
+        onChange: () => ({
+          disabled: false,
+        }),
       },
       disabled: true,
       rules: [{ required: true, message: 'Is required!' }],
