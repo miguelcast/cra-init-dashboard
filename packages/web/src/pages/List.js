@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List as ListCrud, useCrudList } from '../components/Crud';
+import { List as ListCrud, useCrudList } from 'react-easy-crud';
 import userConfig from '../config/cruds/user';
 
 const List = props => {

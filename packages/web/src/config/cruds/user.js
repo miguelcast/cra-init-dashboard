@@ -1,9 +1,9 @@
 const user = {
   keyName: 'key',
-  getList: '/users',
-  getByKey: '/user',
-  post: '/postUser.json',
-  delete: '/deleteUser.json',
+  getList: { url: '/users' },
+  getByKey: { url: '/user/{keyName}' },
+  upsert: { url: '/postUser.json' },
+  delete: { url: '/deleteUser.json' },
   fields: [
     {
       title: 'Name',
