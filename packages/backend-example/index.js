@@ -6,8 +6,8 @@ import countries from './countries';
 
 const app = express();
 
-app.use(express.static('static'));
 app.use(cors());
+app.use(express.static('static'));
 app.use(bodyParser.json());
 app.use(express.static('../build'));
 
@@ -42,6 +42,6 @@ app.get('/countries', function(req, res) {
   res.json(countries);
 });
 
-const server = app.listen(3005, function() {
+const server = app.listen(4000, function() {
   console.log('Example app listening on port ' + server.address().port);
 });
