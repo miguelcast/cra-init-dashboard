@@ -16,6 +16,7 @@
 * [Ant Design](https://ant.design)
 * [Less](http://lesscss.org) for Ant Design customization
 * [Axios](https://github.com/axios/axios)
+* [React easy CRUD](https://github.com/cognox-sas/react-easy-crud.git)
 
 #### Clone project
 
