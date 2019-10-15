@@ -30,7 +30,7 @@
     "@rematch/loading": "^1.1.2",
     "@rematch/persist": "^1.1.5",
     "antd": "^3.15.0",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "i18next": "^15.0.7",
     "i18next-browser-languagedetector": "^3.0.1",
     "i18next-chained-backend": "^1.0.1",
@@ -42,10 +42,10 @@
     "react-dom": "^16.6.0",
     "react-easy-crud": "^0.2.13",
     "react-i18next": "^10.5.1",
-    "react-redux": "^6.0.1",
+    "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "^2.1.8",
-    "redux-persist": "^5.10.0"
+    "react-scripts": "^3.2.0",
+    "redux-persist": "^6.0.0"
   },
   "css": {
     "preprocess": "less"
