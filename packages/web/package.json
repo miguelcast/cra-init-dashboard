@@ -1,0 +1,92 @@
+{
+  "name": "web",
+  "title": "Web dashboard",
+  "description": "Create React App, React Router v4, Rematch and Ant Design",
+  "keywords": [
+    "template",
+    "react",
+    "rematch",
+    "router",
+    "antd",
+    "app",
+    "boilerplate"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miguelcast/cra-rr4-redux-antd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/miguelcast/cra-rr4-redux-antd/issues"
+  },
+  "version": "0.3.0",
+  "private": true,
+  "license": "MIT",
+  "author": "Miguel Cast",
+  "resolutions": {
+    "**/event-stream": "^4.0.1"
+  },
+  "dependencies": {
+    "@rematch/core": "^1.0.6",
+    "@rematch/loading": "^1.1.2",
+    "@rematch/persist": "^1.1.5",
+    "antd": "^3.15.0",
+    "axios": "^0.19.0",
+    "i18next": "^15.0.7",
+    "i18next-browser-languagedetector": "^3.0.1",
+    "i18next-chained-backend": "^1.0.1",
+    "i18next-localstorage-backend": "^2.1.2",
+    "i18next-xhr-backend": "^2.0.1",
+    "moment": "^2.24.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-easy-crud": "^0.2.13",
+    "react-i18next": "^10.5.1",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "^3.2.0",
+    "redux-persist": "^6.0.0"
+  },
+  "css": {
+    "preprocess": "less"
+  },
+  "scripts": {
+    "analyze": "source-map-explorer build/static/js/main.*",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "precommit": "lint-staged",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint:fix"
+    }
+  },
+  "devDependencies": {
+    "@ljharb/eslint-config": "^14.1.0",
+    "babel-plugin-import": "^1.7.0",
+    "customize-cra": "^0.8.0",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-config-standard": "14.1.0",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^2.1.2",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^3.0.8",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "prettier": "^1.12.1",
+    "react-app-rewired": "^2.1.1",
+    "source-map-explorer": "^2.1.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
