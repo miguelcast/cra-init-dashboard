@@ -48,14 +48,6 @@ npm start
 ```
 src
 |-- components
-|   |-- Crud
-|   |   |-- Form.js
-|   |   |-- index.js
-|   |   |-- List.js
-|   |   |-- typeForms.js
-|   |   |-- DateTableFilter.js
-|   |   |-- SearchTableFilter.js
-|   |   `-- hooks.js
 |   |-- Auth
 |   |   |-- index.js
 |   |   |-- hooks.js
