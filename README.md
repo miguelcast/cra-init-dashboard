@@ -1,6 +1,6 @@
 <h1 align="center">⚛ React Starter Kit Dashboard ⚛ </h1>
 
-![ScreenShot](screenshot.png)
+![ScreenShot](packages/web/screenshot.png)
 
 #### Features:
 * Internationalization loading files from backend with i18next
