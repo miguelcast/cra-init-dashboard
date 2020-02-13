@@ -1,0 +1,9 @@
+in web client installation (cra-init-dashboard/packages/web) yarn start command:
+
+ cra-init-dashboard/packages/web $ yarn start -> antd error
+
+ Yarn start command require two additional previous commands to install antd:  
+
+ cra-init-dashboard/packages/web $ npm install antd
+ cra-init-dashboard/packages/web $ yarn add antd
+ cra-init-dashboard/packages/web $ yarn start
