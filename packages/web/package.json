@@ -36,7 +36,7 @@
     "i18next-chained-backend": "^1.0.1",
     "i18next-localstorage-backend": "^2.1.2",
     "i18next-xhr-backend": "^2.0.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
